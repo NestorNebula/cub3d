@@ -19,7 +19,7 @@ SRCS 			= $(addprefix $(SRC_DIR)/, $(SRCS_FILES))
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-TESTS_FILES		=
+TESTS_FILES		= read_scene.c texture_from_line.c
 
 TESTS			= $(addprefix $(TEST_DIR)/, $(TESTS_FILES))
 
