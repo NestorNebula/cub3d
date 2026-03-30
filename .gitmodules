@@ -1,0 +1,3 @@
+[submodule "test/cut"]
+	path = test/cut
+	url = https://github.com/NestorNebula/cut.git
