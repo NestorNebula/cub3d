@@ -54,6 +54,10 @@ int	main(void)
 	test_valid_scene("works for valid scene with bigger map", MAP_TEXTURES VALID_MAP_2);
 	test_invalid_scene("handles scene with no map", MAP_TEXTURES);
 	test_invalid_scene("handles scene with no textures", VALID_MAP_1);
+	unlink(NO_PATH);
+	unlink(SO_PATH);
+	unlink(WE_PATH);
+	unlink(EA_PATH);
 }
 
 int		create_test_file(char *name, char *content)
