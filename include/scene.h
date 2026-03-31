@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:08:42 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/31 14:01:17 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:46:58 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,15 @@ int		row_from_line(char *line, t_row *row, t_scene *scene);
  * @return 1 if the scene is valid, 0 otherwise
  */
 int		is_valid_scene(t_scene *scene);
+
+/**
+ * Sets a scene's log member to a given string.
+ *
+ * @param scene A poiner to a scene structure
+ * @param log A pointer to a string literal
+ * @return The given scene
+ */
+t_scene	*set_scene_log(t_scene *scene, const char *log);
 
 /**
  * Frees a scene structure
