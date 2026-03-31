@@ -15,7 +15,8 @@
 
 #include <stddef.h>
 
-#define SQUARE_TYPES "01NSEW"
+#define SQUARE_TYPES "01 "
+#define ORIENTATION_TYPES "NSEW"
 
 typedef enum e_square_type
 {
@@ -27,6 +28,7 @@ typedef enum e_square_type
 typedef struct s_square
 {
 	t_square_type	type;
+	char			orientation;
 }	t_square;
 
 typedef struct s_row
@@ -37,8 +39,9 @@ typedef struct s_row
 
 typedef struct s_map
 {
-	size_t	rows_size;
-	t_row	*rows;
+	size_t		rows_size;
+	t_row		*rows;
+	t_square	*start;
 }	t_map;
 
 typedef struct s_texture
@@ -87,9 +90,10 @@ int		texture_from_line(char *line, t_textures *textures);
  *
  * @param line A string
  * @param row A pointer to the row structure to set
+ * @param map A pointer to the map structure in which the row will be stored
  * @return 1 on success, 0 on error
  */
-int		row_from_line(char *line, t_row *row);
+int		row_from_line(char *line, t_row *row, t_map *map);
 
 /**
  * Checks if a given scene respects the scene rules.
