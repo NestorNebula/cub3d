@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:08:42 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/30 12:14:29 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:01:17 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_scene
 {
 	t_map		map;
 	t_textures	textures;
+	const char	*log;
 }	t_scene;
 
 /**
@@ -79,21 +80,21 @@ t_scene	*read_scene(char *filepath);
  * Converts a given line into a texture.
  *
  * @param line A string
- * @param textures A pointer to a textures structure,
+ * @param scene A pointer to a scene structure,
  * in which the texture read will be stored
  * @return 1 on success, 0 on error
  */
-int		texture_from_line(char *line, t_textures *textures);
+int		texture_from_line(char *line, t_scene *scene);
 
 /**
  * Converts a given line into a row structure.
  *
  * @param line A string
  * @param row A pointer to the row structure to set
- * @param map A pointer to the map structure in which the row will be stored
+ * @param scene A pointer to the scene structure in which the row will be stored
  * @return 1 on success, 0 on error
  */
-int		row_from_line(char *line, t_row *row, t_map *map);
+int		row_from_line(char *line, t_row *row, t_scene *scene);
 
 /**
  * Checks if a given scene respects the scene rules.
