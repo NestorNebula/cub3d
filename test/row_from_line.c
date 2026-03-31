@@ -8,13 +8,13 @@
 int	main(void)
 {
 	t_unit_test	*unit_test;
-	t_map		map;
+	t_scene		scene;
 	t_row		row;
 	char		*line;
 	size_t		i;
 
 	unit_test = new_unit_test("row_from_line", false);
-	cut_expect(row_from_line(ROW_LINE, &row, &map) == 1,
+	cut_expect(row_from_line(ROW_LINE, &row, &scene) == 1,
 			unit_test, "returns 1 for valid line");
 	cut_expect(row.length == strlen(ROW_LINE),
 			unit_test, "sets row's length to line length");
@@ -27,9 +27,9 @@ int	main(void)
 		i++;
 	}
 	free(row.squares);
-	cut_expect(row_from_line("10X1", &row, &map) == 0,
+	cut_expect(row_from_line("10X1", &row, &scene) == 0,
 			unit_test, "returns 0 for invalid line (invalid character)");
-	cut_expect(row_from_line("10NS1", &row, &map) == 0,
+	cut_expect(row_from_line("10NS1", &row, &scene) == 0,
 			unit_test, "returns 0 for invalid line (multiple spawning positions");
 	end_unit_test(unit_test);
 }
