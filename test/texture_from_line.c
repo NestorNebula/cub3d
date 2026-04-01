@@ -1,14 +1,13 @@
-#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include "cut.h"
 #include "scene.h"
 
-#define NO_PATH ".no_path_texture_from_line.test"
-#define SO_PATH ".so_path_texture_from_line.test"
-#define WE_PATH ".we_path_texture_from_line.test"
-#define EA_PATH ".ea_path_texture_from_line.test"
+#define T_PATH "textures/"
+#define NO_PATH T_PATH "no.xpm"
+#define SO_PATH T_PATH "so.xpm"
+#define WE_PATH T_PATH "we.xpm"
+#define EA_PATH T_PATH "ea.xpm"
 #define F_R "220"
 #define F_G "100"
 #define F_B "0"
@@ -16,18 +15,11 @@
 #define C_G "30"
 #define C_B "0"
 
-int		create_test_file(char *name, char *content);
-
 int	main(void)
 {
 	t_unit_test	*unit_test;
 	t_scene		scene;
 
-	if (create_test_file(NO_PATH, "") == -1
-		|| create_test_file(SO_PATH, "") == -1
-		|| create_test_file(WE_PATH, "") == -1
-		|| create_test_file(EA_PATH, "") == -1)
-		return (0);
 	unit_test = new_unit_test("texture_from_line", false);
 	cut_expect(texture_from_line("NO " NO_PATH, &scene) != 0,
 			unit_test, "returns 1 after setting NO texture");
@@ -78,32 +70,5 @@ int	main(void)
 			unit_test, "returns 0 for invalid color (longer than RGB format)");
 	cut_expect(texture_from_line("F" "255,255", &scene) == 0,
 			unit_test, "returns 0 for invalid color (shorter than RGB format)");
-
-	unlink(NO_PATH);
-	unlink(SO_PATH);
-	unlink(WE_PATH);
-	unlink(EA_PATH);
 	end_unit_test(unit_test);
-}
-
-int		create_test_file(char *name, char *content)
-{
-	int	fd;
-	size_t	i;
-
-	if (content == NULL)
-		return (-1);
-	fd = open(name, O_CREAT | O_WRONLY, 0644);
-	if (fd == -1)
-		return (-1);
-	i = 0;
-	while (content[i] != '\0')
-		i++;
-	if (write(fd, content, i) != (int) i)
-	{
-		close(fd);
-		return (-1);
-	}
-	close(fd);
-	return (0);
 }
