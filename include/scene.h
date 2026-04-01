@@ -40,6 +40,7 @@ typedef struct s_row
 typedef struct s_map
 {
 	size_t		rows_size;
+	size_t		width;
 	t_row		*rows;
 	t_square	*start;
 }	t_map;
