@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "libft.h"
 #include "scene.h"
 
 t_scene	*set_scene_log(t_scene *scene, const char *log)
@@ -20,4 +22,23 @@ t_scene	*set_scene_log(t_scene *scene, const char *log)
 	return (scene);
 }
 
-void	free_scene(t_scene *scene);
+void	free_scene(t_scene *scene)
+{
+	size_t	i;
+
+	if (scene == NULL)
+		return ;
+	i = 0;
+	while (i < scene->map.rows_size)
+		free(scene->map.rows[i++].squares);
+	free(scene->map.rows);
+	free(scene->textures.no.path);
+	free(scene->textures.so.path);
+	free(scene->textures.we.path);
+	free(scene->textures.ea.path);
+	ft_close(scene->textures.no.fd);
+	ft_close(scene->textures.so.fd);
+	ft_close(scene->textures.we.fd);
+	ft_close(scene->textures.ea.fd);
+	free(scene);
+}
