@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 #include "scene.h"
 
@@ -33,6 +34,11 @@ int		row_from_line(char *line, t_row *row, t_scene *scene)
 	{
 		square_from_char(line[i], row->squares + i, scene);
 		i++;
+	}
+	if (scene->log)
+	{
+		free(row->squares);
+		row->squares = NULL;
 	}
 	return (!scene->log);
 }
