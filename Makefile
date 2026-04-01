@@ -46,7 +46,7 @@ MKDIR			= @mkdir
 MKDIRFLAGS		= -p
 VALGRIND		= valgrind
 VALGRIND_FLAGS	= --leak-check=full --show-leak-kinds=all --track-fds=yes \
-				  --track-origins=yes --trace-childrens=yes
+				  --track-origins=yes --trace-children=yes
 
 all: $(NAME)
 
