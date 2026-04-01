@@ -26,7 +26,7 @@ int	main(void)
 	if (create_test_file(NO_PATH, "") == -1
 		|| create_test_file(SO_PATH, "") == -1
 		|| create_test_file(WE_PATH, "") == -1
-		|| create_test_file(EA_PATH, ""))
+		|| create_test_file(EA_PATH, "") == -1)
 		return (0);
 	unit_test = new_unit_test("texture_from_line", false);
 	cut_expect(texture_from_line("NO " NO_PATH, &scene) != 0,
@@ -62,9 +62,9 @@ int	main(void)
 	cut_expect((scene.textures.c & 255) == atoi(C_B),
 			unit_test, "sets C's blue value correctly");
 	free(scene.textures.no.path);
-	free(scene.textures.no.path);
-	free(scene.textures.no.path);
-	free(scene.textures.no.path);
+	free(scene.textures.so.path);
+	free(scene.textures.we.path);
+	free(scene.textures.ea.path);
 
 	cut_expect(texture_from_line("A" " NA", &scene) == 0,
 			unit_test, "returns 0 for invalid identifier");
@@ -93,7 +93,7 @@ int		create_test_file(char *name, char *content)
 
 	if (content == NULL)
 		return (-1);
-	fd = open(name, O_WRONLY);
+	fd = open(name, O_CREAT | O_WRONLY, 0644);
 	if (fd == -1)
 		return (-1);
 	i = 0;

@@ -3,7 +3,7 @@
 #include "cut.h"
 #include "scene.h"
 
-#define TEST_FILE ".read_scene_test.test"
+#define TEST_FILE ".read_scene_test.cub"
 #define NO_PATH ".no_path_test"
 #define SO_PATH ".so_path_test"
 #define WE_PATH ".we_path_test"
@@ -22,10 +22,10 @@
 	"1100N1\n" \
 	"111111\n"
 
-#define VALID_MAP_2 "1111111111111111111111111\n" \
-	"1000000000110000000000001\n" \
-	"1011000001110000000000001\n" \
-	"1001000000000000000000001\n" \
+#define VALID_MAP_2 "        1111111111111111111111111\n" \
+	"        1000000000110000000000001\n" \
+	"        1011000001110000000000001\n" \
+	"        1001000000000000000000001\n" \
 	"111111111011000001110000000000001\n" \
 	"100000000011000001110111111111111\n" \
 	"11110111111111011100000010001\n" \
@@ -48,7 +48,7 @@ int	main(void)
 	if (create_test_file(NO_PATH, "") == -1
 		|| create_test_file(SO_PATH, "") == -1
 		|| create_test_file(WE_PATH, "") == -1
-		|| create_test_file(EA_PATH, ""))
+		|| create_test_file(EA_PATH, "") == -1)
 		return (0);
 	test_valid_scene("works for valid scene with basic map", MAP_TEXTURES VALID_MAP_1);
 	test_valid_scene("works for valid scene with bigger map", MAP_TEXTURES VALID_MAP_2);
@@ -67,7 +67,7 @@ int		create_test_file(char *name, char *content)
 
 	if (content == NULL)
 		return (-1);
-	fd = open(name, O_WRONLY);
+	fd = open(name, O_CREAT | O_WRONLY, 0644);
 	if (fd == -1)
 		return (-1);
 	i = 0;
@@ -90,7 +90,7 @@ void	test_valid_scene(char *name, char *scene_str)
 	unit_test = new_unit_test(name, false);
 	cut_assert(create_test_file(TEST_FILE, scene_str) != -1, unit_test, "creates scene file");
 	scene = read_scene(TEST_FILE);
-	cut_expect(scene != NULL, unit_test, "returns non-null pointer for valid scene");
+	cut_assert(scene != NULL, unit_test, "returns non-null pointer for valid scene");
 	unlink(TEST_FILE);
 	free_scene(scene);
 	end_unit_test(unit_test);

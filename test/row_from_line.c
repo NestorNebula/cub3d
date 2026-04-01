@@ -14,6 +14,7 @@ int	main(void)
 	size_t		i;
 
 	unit_test = new_unit_test("row_from_line", false);
+	scene.log = NULL;
 	cut_expect(row_from_line(ROW_LINE, &row, &scene) == 1,
 			unit_test, "returns 1 for valid line");
 	cut_expect(row.length == strlen(ROW_LINE),
