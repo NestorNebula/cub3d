@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "cut.h"
 #include "scene.h"
 
@@ -57,6 +58,10 @@ int	main(void)
 	free(scene.textures.so.path);
 	free(scene.textures.we.path);
 	free(scene.textures.ea.path);
+	close(scene.textures.no.fd);
+	close(scene.textures.so.fd);
+	close(scene.textures.we.fd);
+	close(scene.textures.ea.fd);
 
 	cut_expect(texture_from_line("A" " NA", &scene) == 0,
 			unit_test, "returns 0 for invalid identifier");
