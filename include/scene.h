@@ -106,6 +106,15 @@ int		row_from_line(char *line, t_row *row, t_scene *scene);
 int		is_valid_scene(t_scene *scene);
 
 /**
+ * Checks if a given map respects the map rules.
+ *
+ * @param map A pointer to a map structure
+ * @param scene A pointer to a scene structure to which the map belongs
+ * @return 1 if the map is valid, 0 otherwise
+ */
+int		is_valid_map(t_map *map, t_scene *scene);
+
+/**
  * Sets a scene's log member to a given string.
  *
  * @param scene A poiner to a scene structure
@@ -120,5 +129,28 @@ t_scene	*set_scene_log(t_scene *scene, const char *log);
  * @param scene A pointer to a scene structure
  */
 void	free_scene(t_scene *scene);
+
+/**
+ * Gets the coordinates of a given square in a map.
+ *
+ * @param square A pointer to a square structure
+ * @param map A pointer to a map structure
+ * @param x A pointer to an integer where
+ * the square's position in the x axis will be stored
+ * @param y A pointer to an integer where
+ * the square's position in the y axis will be stored
+ * @return 1 if the square was found, 0 otherwise
+ */
+int		get_square_coordinates(t_square *square, t_map *map, int *x, int *y);
+
+/**
+ * Searches inside a map for a square at given coordinates.
+ *
+ * @param map A pointer to a map structure
+ * @param x The position of the searched square in the x axis
+ * @param y The position of the searched square in the y axis
+ * @return A pointer to a square structure if found, a NULL pointer otherwise
+ */
+t_square	*square_from_coordinates(t_map *map, int x, int y);
 
 #endif // !SCENE_H
