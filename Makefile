@@ -13,9 +13,15 @@ CUT_DIR			= $(TEST_DIR)/cut
 CUT_INC_DIR		= $(CUT_DIR)/include
 CUT				= $(CUT_DIR)/libcut.a
 
+PARSING_DIR		= $(SRC_DIR)/parsing
+
 SRCS_FILES		=
 
-SRCS 			= $(addprefix $(SRC_DIR)/, $(SRCS_FILES))
+PARSING_FILES	= is_valid_map.c is_valid_scene.c map_helpers.c read_scene.c \
+				  row_from_line.c scene_helpers.c texture_from_line.c
+
+SRCS 			= $(addprefix $(SRC_DIR)/, $(SRCS_FILES)) \
+				  $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
@@ -32,6 +38,7 @@ LFLAGS			= -L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx -lXext -lX11 -lm -lz
 
 AR				= ar
 ARFLAGS			= -r -c -s
+CP				= cp
 NORMINETTE		= @norminette
 RM 				= rm
 RMFLAGS 		= -r -f
@@ -87,10 +94,10 @@ checknorm:
 $(CUT):
 	$(MAKE) -C $(CUT_DIR) --no-print-directory
 
-$(TEST_DIR)/%.out: $(TEST_DIR)/%.c $(CUT) $(OBJS)
+$(TEST_DIR)/%.out: $(TEST_DIR)/%.c $(LIBFT) $(CUT) $(OBJS)
+	$(CP) $(LIBFT) libcub3d.a
 	$(AR) $(ARFLAGS) libcub3d.a $(OBJS)
-	$(CC) $(CFLAGS) $< -o $@ $(IFLAGS) -I$(CUT_INC_DIR) -L$(CUT_DIR) \
-        -L. -lcut -lcub3d
+	$(CC) $(CFLAGS) $< -o $@ $(IFLAGS) -I$(CUT_INC_DIR) -L$(CUT_DIR) -L. -lcut -lcub3d
 
 test: $(TEST_EXECS)
 	@for test in $(TEST_EXECS) ; do \
@@ -104,7 +111,9 @@ test_leaks : $(TEST_EXECS)
 
 fclean_test:
 	$(RM) $(RMFLAGS) $(TEST_EXECS)
-	$(MAKE) -C $(CUT_DIR) fclean --no-print-directory
+	$(RM) $(RMFLAGS) libcub3d.a
+	$(MAKE) fclean -C $(LIBFT_DIR) --no-print-directory
+	$(MAKE) fclean -C $(CUT_DIR) --no-print-directory
 
 
 .PHONY: all clean fclean re leaks leaks_supp sanitize thread checknorm test \
