@@ -42,7 +42,11 @@ int		texture_from_line(char *line, t_scene *scene)
 					"Error\nAllocation error during scene parsing"));
 	texture->fd = open(texture->path, O_RDWR);
 	if (texture->fd == -1)
+	{
+		free(texture->path);
+		texture->path = NULL;
 		return (!set_scene_log(scene, "Error\nCan't open a texture file"));
+	}
 	return (1);
 }
 
@@ -64,6 +68,7 @@ static int			rgb_texture_from_line(char *line, t_scene *scene)
 	char	**rgb_split;
 	size_t	split_size;
 	int		*rgb_texture;
+	int		rc;
 
 	if (line[0] == 'F')
 		rgb_texture = &scene->textures.f;
@@ -81,7 +86,9 @@ static int			rgb_texture_from_line(char *line, t_scene *scene)
 		ft_free_arr(rgb_split, free);
 		return (!set_scene_log(scene, "Error\nColor not in RGB format"));
 	}
-	return (read_rgb(rgb_split, rgb_texture, scene));
+	rc = read_rgb(rgb_split, rgb_texture, scene);
+	ft_free_arr(rgb_split, free);
+	return (rc);
 }
 
 static int			read_rgb(char **rgb_split, int *rgb_texture, 
