@@ -28,6 +28,8 @@ int		is_valid_scene(t_scene *scene)
 			|| (scene->textures.c & (255 << 24)) != 0)
 			set_scene_log(scene, "Error\nMissing texture");
 	}
+	if (!scene->log && scene->map.start == NULL)
+		set_scene_log(scene, "Error\nNo spawning position");
 	if (!scene->log)
 		is_valid_map(&scene->map, scene);
 	print_log(scene);
