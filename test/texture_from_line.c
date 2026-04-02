@@ -21,6 +21,12 @@ int	main(void)
 	t_unit_test	*unit_test;
 	t_scene		scene;
 
+	scene.textures.no.path = NULL;
+	scene.textures.so.path = NULL;
+	scene.textures.we.path = NULL;
+	scene.textures.ea.path = NULL;
+	scene.textures.f = 255 << 24;
+	scene.textures.c = 255 << 24;
 	unit_test = new_unit_test("texture_from_line", false);
 	cut_expect(texture_from_line("NO " NO_PATH, &scene) != 0,
 			unit_test, "returns 1 after setting NO texture");
