@@ -18,7 +18,7 @@
 #define SCENE_DUPLICATE_TEXTURE SCENES_PATH "scene_duplicate_texture.cub"
 #define SCENE_INVALID_CHAR SCENES_PATH "scene_invalid_char.cub"
 #define SCENE_INVALID_DONUT SCENES_PATH "scene_invalid_donut.cub"
-#define SCENE_INVALID_NON_RECTANGULAR "scene_invalid_non_rectangular.cub"
+#define SCENE_INVALID_NON_RECTANGULAR SCENES_PATH "scene_invalid_non_rectangular.cub"
 #define SCENE_INVALID_RGB SCENES_PATH "scene_invalid_rgb.cub"
 #define SCENE_MAP_EMPTY_LINE SCENES_PATH "scene_map_empty_line.cub"
 #define SCENE_MAP_NON_ENCLOSED SCENES_PATH "scene_map_non_enclosed.cub"
