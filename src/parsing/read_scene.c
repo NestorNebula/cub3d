@@ -43,11 +43,11 @@ t_scene	*read_scene(char *filepath)
 	init_scene(scene);
 	fd = open(filepath, O_RDWR);
 	if (fd == -1)
-		set_scene_log(scene, "Error\nCan't open scene file");
+		set_scene_log(scene, LOG_FILE_ERR);
 	ext = ft_strrchr(filepath, '.');
 	if (ft_strlen(filepath) < EXT_LEN + 1 || ext == NULL
 		|| ft_strncmp(ext, EXT, EXT_LEN + 1) != 0 || *(ext - 1) == '/')
-		set_scene_log(scene, "Error\nInvalid file extension");
+		set_scene_log(scene, LOG_BAD_EXT);
 	if (!scene->log)
 		read_content(scene, fd);
 	ft_close(fd);
@@ -98,7 +98,7 @@ static void	read_map(t_scene *scene, int fd, char *first_line)
 	{
 		rows = ft_realloc(scene->map.rows, scene->map.rows_size * sizeof(t_row), (scene->map.rows_size + 1) * sizeof(t_row));
 		if (rows == NULL)
-			set_scene_log(scene, "Error\nAllocation error during map parsing");
+			set_scene_log(scene, LOG_ALLOC_ERR);
 		else
 		{
 			scene->map.rows = rows;
@@ -108,7 +108,7 @@ static void	read_map(t_scene *scene, int fd, char *first_line)
 		line = get_next_line(fd);
 	}
 	if (line != NULL && !scene->log)
-		set_scene_log(scene, "Error\nMap content doesn't end scene file");
+		set_scene_log(scene, LOG_MAP_NOT_END);
 	free(line);
 }
 

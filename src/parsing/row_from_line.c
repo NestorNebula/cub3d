@@ -24,11 +24,10 @@ int		row_from_line(char *line, t_row *row, t_scene *scene)
 		*ft_strchr(line, '\n') = '\0';
 	row->length = ft_strlen(line);
 	if (row->length == 0)
-		return (!set_scene_log(scene, "Error\nEmpty row in map"));
+		return (!set_scene_log(scene, LOG_EMPTY_ROW));
 	row->squares = ft_calloc(row->length, sizeof(t_square)); 
 	if (row->squares == NULL)
-		return (!set_scene_log(scene,
-				"Error\nAllocation error during map parsing"));
+		return (!set_scene_log(scene, LOG_ALLOC_ERR));
 	i = 0;
 	while (i < row->length && !scene->log)
 	{
@@ -53,7 +52,7 @@ static void	square_from_char(char c, t_square *square, t_scene *scene)
 	else if (ft_strchr(ORIENTATION_TYPES, c))
 	{
 		if (scene->map.start != NULL)
-			set_scene_log(scene, "Error\nMultiple spawning position");
+			set_scene_log(scene, LOG_MULTI_SPAWN);
 		else
 		{
 			square->type = S_EMPTY;
@@ -62,5 +61,5 @@ static void	square_from_char(char c, t_square *square, t_scene *scene)
 		}
 	}
 	else
-		set_scene_log(scene, "Error\nUnexpected character in map");
+		set_scene_log(scene, LOG_UNEXPECTED_CHAR);
 }

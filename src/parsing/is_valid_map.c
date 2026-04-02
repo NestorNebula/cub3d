@@ -43,8 +43,7 @@ int		is_valid_map(t_map *map, t_scene *scene)
 	}
 	map_copy = ft_calloc(map->width * map->rows_size, sizeof(int));
 	if (map_copy == NULL)
-		return (!set_scene_log(scene,
-					"Error\nAllocation error during map parsing"));
+		return (!set_scene_log(scene, LOG_ALLOC_ERR));
 	rc = visit_map(map, map_copy, scene);
 	free(map_copy);
 	return (rc);
@@ -56,7 +55,7 @@ static int	visit_map(t_map *map, int *map_copy, t_scene *scene)
 	size_t	y;
 
 	if (map->rows_size == 0 || map->width == 0)
-		return (!set_scene_log(scene, "Error\nEmpty map"));
+		return (!set_scene_log(scene, LOG_EMPTY_MAP));
 	visit_square(map, map_copy, map->start, P_REACHED);
 	y = 0;
 	while (y < map->rows_size)
@@ -111,9 +110,9 @@ static void	check_square(t_scene *scene, int *map_copy, int c[2])
 	if (square == NULL || square->type == S_SPACE)
 		return ;
 	if (map_copy[y * map->width + x] == N_REACHED)
-		set_scene_log(scene, "Error\nMultiple islands in map");
+		set_scene_log(scene, LOG_MULTI_ISLAND);
 	if (square->type == S_EMPTY && !is_enclosed(map, x, y))
-		set_scene_log(scene, "Error\nMap not enclosed by walls");
+		set_scene_log(scene, LOG_NOT_ENCLOSED);
 }
 
 static int	is_enclosed(t_map *map, int x, int y)
