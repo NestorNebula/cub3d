@@ -51,6 +51,7 @@ t_scene	*read_scene(char *filepath)
 	if (!scene->log)
 		read_content(scene, fd);
 	ft_close(fd);
+	get_next_line(-1);
 	if (is_valid_scene(scene))
 		return (scene);
 	free_scene(scene);
