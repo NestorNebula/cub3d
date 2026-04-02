@@ -13,6 +13,22 @@
 #ifndef SCENE_H
 # define SCENE_H
 
+# define LOG_EMPTY_ROW "Error\nEmpty row in map"
+# define LOG_ALLOC_ERR "Error\nAllocation error"
+# define LOG_MULTI_SPAWN "Error\nMultiple spawning positions"
+# define LOG_UNEXPECTED_CHAR "Error\nUnexpected character in map"
+# define LOG_MISSING_TEXTURE "Error\nMissing texture"
+# define LOG_NO_SPAWN "Error\nNo spawning position"
+# define LOG_FILE_ERR "Error\nCan't open scene file"
+# define LOG_TEXTURE_FILE_ERR "Error\nCan't open texture file"
+# define LOG_BAD_EXT "Error\nInvalid file extension"
+# define LOG_MAP_NOT_END "Error\nMap content doesn't end scene file"
+# define LOG_DUP_TEXTURE "Error\nDuplicate texture"
+# define LOG_BAD_RGB "Error\nColor not in RGB format"
+# define LOG_EMPTY_MAP "Error\nEmpty map"
+# define LOG_MULTI_ISLAND "Error\nMultiple islands in map"
+# define LOG_NOT_ENCLOSED "Error\nSquares not enclosed by walls"
+
 #include <stddef.h>
 
 #define SQUARE_TYPES "01 "
