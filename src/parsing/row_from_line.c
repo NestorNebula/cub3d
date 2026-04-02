@@ -16,7 +16,7 @@
 
 static void	square_from_char(char c, t_square *square, t_scene *scene);
 
-int		row_from_line(char *line, t_row *row, t_scene *scene)
+int	row_from_line(char *line, t_row *row, t_scene *scene)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ int		row_from_line(char *line, t_row *row, t_scene *scene)
 	row->length = ft_strlen(line);
 	if (row->length == 0)
 		return (!set_scene_log(scene, LOG_EMPTY_ROW));
-	row->squares = ft_calloc(row->length, sizeof(t_square)); 
+	row->squares = ft_calloc(row->length, sizeof(t_square));
 	if (row->squares == NULL)
 		return (!set_scene_log(scene, LOG_ALLOC_ERR));
 	i = 0;

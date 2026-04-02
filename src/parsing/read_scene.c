@@ -96,13 +96,15 @@ static void	read_map(t_scene *scene, int fd, char *first_line)
 	line = first_line;
 	while (line != NULL && line[0] != '\0' && line[0] != '\n' && !scene->log)
 	{
-		rows = ft_realloc(scene->map.rows, scene->map.rows_size * sizeof(t_row), (scene->map.rows_size + 1) * sizeof(t_row));
+		rows = ft_realloc(scene->map.rows, scene->map.rows_size * sizeof(t_row),
+				(scene->map.rows_size + 1) * sizeof(t_row));
 		if (rows == NULL)
 			set_scene_log(scene, LOG_ALLOC_ERR);
 		else
 		{
 			scene->map.rows = rows;
-			row_from_line(line, &scene->map.rows[scene->map.rows_size++], scene);
+			row_from_line(line, &scene->map.rows[scene->map.rows_size++],
+				scene);
 		}
 		free(line);
 		line = get_next_line(fd);

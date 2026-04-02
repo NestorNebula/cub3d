@@ -20,10 +20,10 @@ static t_texture	*find_texture(char *line, t_scene *scene);
 
 static int			rgb_texture_from_line(char *line, t_scene *scene);
 
-static int			read_rgb(char **rgb_split, int *rgb_texture, 
+static int			read_rgb(char **rgb_split, int *rgb_texture,
 						t_scene *scene);
 
-int		texture_from_line(char *line, t_scene *scene)
+int	texture_from_line(char *line, t_scene *scene)
 {
 	t_texture	*texture;
 	char		*path;
@@ -64,7 +64,7 @@ static t_texture	*find_texture(char *line, t_scene *scene)
 	return (NULL);
 }
 
-static int			rgb_texture_from_line(char *line, t_scene *scene)
+static int	rgb_texture_from_line(char *line, t_scene *scene)
 {
 	char	**rgb_split;
 	size_t	split_size;
@@ -93,8 +93,8 @@ static int			rgb_texture_from_line(char *line, t_scene *scene)
 	return (rc);
 }
 
-static int			read_rgb(char **rgb_split, int *rgb_texture, 
-						t_scene *scene)
+static int	read_rgb(char **rgb_split, int *rgb_texture,
+				t_scene *scene)
 {
 	int	r;
 	int	g;
