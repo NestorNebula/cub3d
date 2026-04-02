@@ -28,6 +28,8 @@ int	is_valid_scene(t_scene *scene)
 			|| (scene->textures.c & (255 << 24)) != 0)
 			set_scene_log(scene, LOG_MISSING_TEXTURE);
 	}
+	if (!scene->log && scene->map.rows_size == 0)
+		set_scene_log(scene, LOG_NO_MAP);
 	if (!scene->log && scene->map.start == NULL)
 		set_scene_log(scene, LOG_NO_SPAWN);
 	if (!scene->log)
