@@ -23,7 +23,7 @@ int	main(void)
 	line = ROW_LINE;
 	while (line[i] != '\0')
 	{
-		cut_expect(row.squares[i].type == line[i],
+		cut_expect((char) row.squares[i].type == line[i],
 				unit_test, "set square's type to expected type");
 		i++;
 	}
