@@ -13,17 +13,19 @@
 #define BASIC_SCENE SCENES_PATH "basic_scene.cub"
 #define DEFAULT_SCENE SCENES_PATH "default_scene.cub"
 #define CUBE_SCENE SCENES_PATH "scene.cube"
-#define SCENE_DONUT_SPACE SCENES_PATH "scene_donut_space.cub"
+#define SCENE_DONUT_MULTIPLE_ISLANDS SCENES_PATH "scene_donut_multiple_islands.cub"
 #define SCENE_DONUT_ZERO SCENES_PATH "scene_donut_zero.cub"
 #define SCENE_DUPLICATE_TEXTURE SCENES_PATH "scene_duplicate_texture.cub"
 #define SCENE_INVALID_CHAR SCENES_PATH "scene_invalid_char.cub"
 #define SCENE_INVALID_DONUT SCENES_PATH "scene_invalid_donut.cub"
+#define SCENE_INVALID_NON_RECTANGULAR "scene_invalid_non_rectangular.cub"
 #define SCENE_INVALID_RGB SCENES_PATH "scene_invalid_rgb.cub"
 #define SCENE_MAP_EMPTY_LINE SCENES_PATH "scene_map_empty_line.cub"
 #define SCENE_MAP_NON_ENCLOSED SCENES_PATH "scene_map_non_enclosed.cub"
 #define SCENE_MAP_NON_ENCLOSED_VOID SCENES_PATH "scene_map_non_enclosed_void.cub"
 #define SCENE_MAP_PADDING SCENES_PATH "scene_map_padding.cub"
 #define SCENE_MISSING_TEXTURE SCENES_PATH "scene_missing_texture.cub"
+#define SCENE_MULTIPLE_ISLANDS SCENES_PATH "scene_multiple_islands.cub"
 #define SCENE_MULTIPLE_SPAWNS SCENES_PATH "scene_multiple_spawns.cub"
 #define SCENE_NO_MAP SCENES_PATH "scene_no_map.cub"
 #define SCENE_NO_SPAWN SCENES_PATH "scene_no_spawn.cub"
@@ -41,17 +43,19 @@ int	main(void)
 	test_valid_scene("works for valid scene with basic scene", BASIC_SCENE);
 	test_valid_scene("works for valid scene with default scene", DEFAULT_SCENE);
 	test_invalid_scene("handles wrong file extension", CUBE_SCENE);
-	test_valid_scene("works for donut with spaces", SCENE_DONUT_SPACE);
+	test_invalid_scene("handles donut with multiple islands", SCENE_DONUT_MULTIPLE_ISLANDS);
 	test_valid_scene("works for donut with zeros", SCENE_DONUT_ZERO);
 	test_invalid_scene("handles duplicate textures", SCENE_DUPLICATE_TEXTURE);
 	test_invalid_scene("handles invalid characters", SCENE_INVALID_CHAR);
 	test_invalid_scene("handles invalid donut", SCENE_INVALID_DONUT);
+	test_invalid_scene("handles invalid non-rectangular map", SCENE_INVALID_NON_RECTANGULAR);
 	test_invalid_scene("handles invalid rgb format", SCENE_INVALID_RGB);
 	test_invalid_scene("handles empty lines in map", SCENE_MAP_EMPTY_LINE);
 	test_invalid_scene("handles non-enclosed map", SCENE_MAP_NON_ENCLOSED);
 	test_invalid_scene("handles void non-enclosed in map", SCENE_MAP_NON_ENCLOSED_VOID);
 	test_valid_scene("works for valid map with padding", SCENE_MAP_PADDING);
 	test_invalid_scene("handles missing texture", SCENE_MISSING_TEXTURE);
+	test_invalid_scene("handles map with multiple islands", SCENE_MULTIPLE_ISLANDS);
 	test_invalid_scene("handles multiple spawns", SCENE_MULTIPLE_SPAWNS);
 	test_invalid_scene("handles scene with no map", SCENE_NO_MAP);
 	test_invalid_scene("handles scene with no spawn", SCENE_NO_SPAWN);
