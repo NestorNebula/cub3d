@@ -96,13 +96,20 @@ static int	rgb_texture_from_line(char *line, t_scene *scene)
 static int	read_rgb(char **rgb_split, int *rgb_texture,
 				t_scene *scene)
 {
-	int	r;
-	int	g;
-	int	b;
+	char	*endptr;
+	int		r;
+	int		g;
+	int		b;
 
-	if (ft_get_number(rgb_split[0], &r) == 0 || r < 0 || r > 255
-		|| ft_get_number(rgb_split[1], &g) == 0 || g < 0 || g > 255
-		|| ft_get_number(rgb_split[2], &b) == 0 || b < 0 || b > 255)
+	endptr = NULL;
+	r = ft_strtol(rgb_split[0], &endptr, 10);
+	if (endptr == NULL || *endptr != '\0' || r < 0 || r > 255)
+		return (!set_scene_log(scene, LOG_BAD_RGB));
+	g = ft_strtol(rgb_split[1], &endptr, 10);
+	if (endptr == NULL || *endptr != '\0' || g < 0 || g > 255)
+		return (!set_scene_log(scene, LOG_BAD_RGB));
+	b = ft_strtol(rgb_split[2], &endptr, 10);
+	if (endptr == NULL || *endptr != '\0' || b < 0 || b > 255)
 		return (!set_scene_log(scene, LOG_BAD_RGB));
 	*rgb_texture = (r << 16) + (g << 8) + b;
 	return (1);
