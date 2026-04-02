@@ -16,7 +16,7 @@
 
 static void	print_log(t_scene *scene);
 
-int		is_valid_scene(t_scene *scene)
+int	is_valid_scene(t_scene *scene)
 {
 	if (!scene->log)
 	{

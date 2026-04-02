@@ -29,10 +29,10 @@
 # define LOG_MULTI_ISLAND "Error\nMultiple islands in map"
 # define LOG_NOT_ENCLOSED "Error\nSquares not enclosed by walls"
 
-#include <stddef.h>
+# include <stddef.h>
 
-#define SQUARE_TYPES "01 "
-#define ORIENTATION_TYPES "NSEW"
+# define SQUARE_TYPES "01 "
+# define ORIENTATION_TYPES "NSEW"
 
 typedef enum e_square_type
 {
@@ -91,7 +91,7 @@ typedef struct s_scene
  * @return A pointer to a scene structure on success,
  * a NULL pointer otherwise
  */
-t_scene	*read_scene(char *filepath);
+t_scene		*read_scene(char *filepath);
 
 /**
  * Converts a given line into a texture.
@@ -101,7 +101,7 @@ t_scene	*read_scene(char *filepath);
  * in which the texture read will be stored
  * @return 1 on success, 0 on error
  */
-int		texture_from_line(char *line, t_scene *scene);
+int			texture_from_line(char *line, t_scene *scene);
 
 /**
  * Converts a given line into a row structure.
@@ -111,7 +111,7 @@ int		texture_from_line(char *line, t_scene *scene);
  * @param scene A pointer to the scene structure in which the row will be stored
  * @return 1 on success, 0 on error
  */
-int		row_from_line(char *line, t_row *row, t_scene *scene);
+int			row_from_line(char *line, t_row *row, t_scene *scene);
 
 /**
  * Checks if a given scene respects the scene rules.
@@ -119,7 +119,7 @@ int		row_from_line(char *line, t_row *row, t_scene *scene);
  * @param scene A pointer to a scene structure
  * @return 1 if the scene is valid, 0 otherwise
  */
-int		is_valid_scene(t_scene *scene);
+int			is_valid_scene(t_scene *scene);
 
 /**
  * Checks if a given map respects the map rules.
@@ -128,7 +128,7 @@ int		is_valid_scene(t_scene *scene);
  * @param scene A pointer to a scene structure to which the map belongs
  * @return 1 if the map is valid, 0 otherwise
  */
-int		is_valid_map(t_map *map, t_scene *scene);
+int			is_valid_map(t_map *map, t_scene *scene);
 
 /**
  * Sets a scene's log member to a given string.
@@ -137,14 +137,14 @@ int		is_valid_map(t_map *map, t_scene *scene);
  * @param log A pointer to a string literal
  * @return The given scene
  */
-t_scene	*set_scene_log(t_scene *scene, const char *log);
+t_scene		*set_scene_log(t_scene *scene, const char *log);
 
 /**
  * Frees a scene structure
  *
  * @param scene A pointer to a scene structure
  */
-void	free_scene(t_scene *scene);
+void		free_scene(t_scene *scene);
 
 /**
  * Gets the coordinates of a given square in a map.
@@ -157,7 +157,8 @@ void	free_scene(t_scene *scene);
  * the square's position in the y axis will be stored
  * @return 1 if the square was found, 0 otherwise
  */
-int		get_square_coordinates(t_square *square, t_map *map, int *x, int *y);
+int			get_square_coordinates(t_square *square, t_map *map,
+				int *x, int *y);
 
 /**
  * Searches inside a map for a square at given coordinates.

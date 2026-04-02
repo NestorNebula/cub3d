@@ -12,13 +12,13 @@
 
 #include <scene.h>
 
-int		get_square_coordinates(t_square *square, t_map *map, int *x, int *y)
+int	get_square_coordinates(t_square *square, t_map *map, int *x, int *y)
 {
 	*y = 0;
-	while ((size_t) *y < map->rows_size)
+	while ((size_t)(*y) < map->rows_size)
 	{
 		*x = 0;
-		while ((size_t) *x < map->rows[*y].length)
+		while ((size_t)(*x) < map->rows[*y].length)
 		{
 			if (map->rows[*y].squares + *x == square)
 				return (1);

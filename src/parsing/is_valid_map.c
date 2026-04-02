@@ -18,16 +18,16 @@
 #define I_REACHED 1
 #define P_REACHED 2
 
-
 static int	visit_map(t_map *map, int *map_copy, t_scene *scene);
 
-static void visit_square(t_map *map, int *map_copy, t_square *square, int status);
+static void	visit_square(t_map *map, int *map_copy, t_square *square,
+				int status);
 
 static void	check_square(t_scene *scene, int *map_copy, int c[2]);
 
 static int	is_enclosed(t_map *map, int x, int y);
 
-int		is_valid_map(t_map *map, t_scene *scene)
+int	is_valid_map(t_map *map, t_scene *scene)
 {
 	size_t	i;
 	int		*map_copy;
@@ -71,9 +71,10 @@ static int	visit_map(t_map *map, int *map_copy, t_scene *scene)
 	return (!scene->log);
 }
 
-static void visit_square(t_map *map, int *map_copy, t_square *square, int status)
+static void	visit_square(t_map *map, int *map_copy, t_square *square,
+				int status)
 {
-	int	c[2];
+	int			c[2];
 	t_square	*l;
 	t_square	*u;
 	t_square	*d;
@@ -101,10 +102,10 @@ static void visit_square(t_map *map, int *map_copy, t_square *square, int status
 
 static void	check_square(t_scene *scene, int *map_copy, int c[2])
 {
-	t_map * const	map = &scene->map;
-	t_square	*square;
-	const int	x = c[0];
-	const int	y = c[1];
+	t_map *const	map = &scene->map;
+	t_square		*square;
+	const int		x = c[0];
+	const int		y = c[1];
 
 	square = square_from_coordinates(map, x, y);
 	if (square == NULL || square->type == S_SPACE)
@@ -125,5 +126,5 @@ static int	is_enclosed(t_map *map, int x, int y)
 	if (l == NULL || u == NULL || d == NULL || r == NULL)
 		return (0);
 	return (l->type != S_SPACE && u->type != S_SPACE
-			&& d->type != S_SPACE && r->type != S_SPACE);
+		&& d->type != S_SPACE && r->type != S_SPACE);
 }
