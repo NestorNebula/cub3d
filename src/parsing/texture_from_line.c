@@ -33,6 +33,8 @@ int		texture_from_line(char *line, t_scene *scene)
 	texture = find_texture(line, scene);
 	if (texture == NULL)
 		return (rgb_texture_from_line(line, scene));
+	if (texture->path != NULL)
+		return (!set_scene_log(scene, "Error\nDuplicate texture"));
 	path = line + 2;
 	while (*path != '\0' && ft_strchr(" \t", *path))
 		path++;
@@ -74,6 +76,8 @@ static int			rgb_texture_from_line(char *line, t_scene *scene)
 		rgb_texture = &scene->textures.f;
 	else
 		rgb_texture = &scene->textures.c;
+	if (!(*rgb_texture & (255 << 24)))
+		return (!set_scene_log(scene, "Error\nDuplicate texture"));
 	rgb_split = ft_split_set(line + 1, " \t,");
 	if (rgb_split == NULL)
 		return (!set_scene_log(scene, 
