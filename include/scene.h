@@ -25,7 +25,7 @@
 # define LOG_MAP_NOT_END "Error\nMap content doesn't end scene file"
 # define LOG_DUP_TEXTURE "Error\nDuplicate texture"
 # define LOG_BAD_RGB "Error\nColor not in RGB format"
-# define LOG_EMPTY_MAP "Error\nEmpty map"
+# define LOG_NO_MAP "Error\nNo map found in scene file"
 # define LOG_MULTI_ISLAND "Error\nMultiple islands in map"
 # define LOG_NOT_ENCLOSED "Error\nSquares not enclosed by walls"
 

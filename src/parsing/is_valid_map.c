@@ -55,7 +55,7 @@ static int	visit_map(t_map *map, int *map_copy, t_scene *scene)
 	size_t	y;
 
 	if (map->rows_size == 0 || map->width == 0)
-		return (!set_scene_log(scene, LOG_EMPTY_MAP));
+		return (!set_scene_log(scene, LOG_NO_MAP));
 	visit_square(map, map_copy, map->start, P_REACHED);
 	y = 0;
 	while (y < map->rows_size)
