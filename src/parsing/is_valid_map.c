@@ -113,7 +113,7 @@ static void	check_square(t_scene *scene, int *map_copy, int c[2])
 	if (map_copy[y * map->width + x] == N_REACHED)
 		set_scene_log(scene, "Error\nMultiple islands in map");
 	if (square->type == S_EMPTY && !is_enclosed(map, x, y))
-		set_scene_log(scene, "Errror\nMap not enclosed by walls");
+		set_scene_log(scene, "Error\nMap not enclosed by walls");
 }
 
 static int	is_enclosed(t_map *map, int x, int y)
