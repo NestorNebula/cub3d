@@ -1,0 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   core.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
+/*   Updated: 2026/04/12 23:55:49 by cmonmire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CORE_H
+# define CORE_H
+
+# include <math.h>
+# include <stdlib.h>
+# include <mlx.h>
+# include "player.h"
+# include "ray.h"
+
+typedef struct s_texture
+{
+	void		*img;
+	char		*addr;
+	int			width;
+	int			height;
+	int			bpp;
+	int			line_len;
+	int			endian;
+}	t_texture;
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+	int			screen_width;
+	int			screen_height;
+	char		**map;
+	t_player	player;
+	t_texture	north;
+	t_texture	south;
+	t_texture	east;
+	t_texture	west;
+}	t_data;
+
+void		init_ray(t_data *data, t_ray *ray, int x);
+void		calc_step_and_side_dist(t_data *data, t_ray *ray);
+void		calc_wall_dist(t_data *data, t_ray *ray);
+void		dda(t_data *data, t_ray *ray);
+void		draw_floor_ceiling(t_data *data);
+void		draw_wall_with_texture(t_data *data, t_ray *ray, int x);
+int			get_texture_color(t_texture *tex, int x, int y);
+t_texture	*get_texture(t_data *data, t_ray *ray);
+
+#endif
