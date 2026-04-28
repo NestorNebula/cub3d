@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:08:42 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/31 17:46:58 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:08:22 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ typedef struct s_map
 	t_square	*start;
 }	t_map;
 
-typedef struct s_texture
+typedef struct s_stexture
 {
 	char	*path;
 	int		fd;
-}	t_texture;
+}	t_stexture;
 
 typedef struct s_textures
 {
-	t_texture	no;
-	t_texture	so;
-	t_texture	we;
-	t_texture	ea;
+	t_stexture	no;
+	t_stexture	so;
+	t_stexture	we;
+	t_stexture	ea;
 	int			f;
 	int			c;
 }	t_textures;

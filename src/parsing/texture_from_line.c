@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:54:45 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/31 15:50:02 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:08:34 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "scene.h"
 
-static t_texture	*find_texture(char *line, t_scene *scene);
+static t_stexture	*find_texture(char *line, t_scene *scene);
 
 static int			rgb_texture_from_line(char *line, t_scene *scene);
 
@@ -25,7 +25,7 @@ static int			read_rgb(char **rgb_split, int *rgb_texture,
 
 int	texture_from_line(char *line, t_scene *scene)
 {
-	t_texture	*texture;
+	t_stexture	*texture;
 	char		*path;
 
 	if (ft_strchr(line, '\n') != NULL)
@@ -51,7 +51,7 @@ int	texture_from_line(char *line, t_scene *scene)
 	return (1);
 }
 
-static t_texture	*find_texture(char *line, t_scene *scene)
+static t_stexture	*find_texture(char *line, t_scene *scene)
 {
 	if (ft_strncmp(line, "NO", 2) == 0)
 		return (&scene->textures.no);

@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 01:41:06 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/13 01:46:52 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:10:28 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	dda(t_data *data, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->map[ray->map_y][ray->map_x] == '1')
+		if (data->scene->map.rows[ray->map_y].squares[ray->map_x].type
+			== S_WALL)
 			ray->hit = 1;
 	}
 }

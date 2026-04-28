@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/28 15:22:41 by noahoussier      ###   ########.fr       */
+/*   Updated: 2026/04/28 16:08:03 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <mlx.h>
 # include "player.h"
 # include "ray.h"
+#include "scene.h"
 
 typedef struct s_texture
 {
@@ -37,7 +38,7 @@ typedef struct s_data
 	t_texture	img;
 	int			screen_width;
 	int			screen_height;
-	char		**map;
+	t_scene		*scene;
 	t_player	player;
 	t_texture	north;
 	t_texture	south;
