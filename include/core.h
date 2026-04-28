@@ -57,5 +57,6 @@ void		draw_wall_with_texture(t_data *data, t_ray *ray, int x);
 int			get_texture_color(t_texture *tex, int x, int y);
 t_texture	*get_texture(t_data *data, t_ray *ray);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_data		*init_data(t_data *data, t_scene *scene, int screen_dim[2]);
 
 #endif
