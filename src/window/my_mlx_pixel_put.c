@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noahoussier </var/spool/mail/noahoussier>  +#+  +:+       +#+        */
+/*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 15:15:17 by noahoussier       #+#    #+#             */
-/*   Updated: 2026/04/28 15:25:55 by noahoussier      ###   ########.fr       */
+/*   Created: 2026/04/28 16:10:15 by nhoussie          #+#    #+#             */
+/*   Updated: 2026/04/28 16:10:20 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
