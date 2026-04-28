@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/12 23:55:49 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/04/28 15:22:41 by noahoussier      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	t_texture	img;
 	int			screen_width;
 	int			screen_height;
 	char		**map;
@@ -42,6 +43,8 @@ typedef struct s_data
 	t_texture	south;
 	t_texture	east;
 	t_texture	west;
+	int			ceiling_color;
+	int			floor_color;
 }	t_data;
 
 void		init_ray(t_data *data, t_ray *ray, int x);
@@ -52,5 +55,6 @@ void		draw_floor_ceiling(t_data *data);
 void		draw_wall_with_texture(t_data *data, t_ray *ray, int x);
 int			get_texture_color(t_texture *tex, int x, int y);
 t_texture	*get_texture(t_data *data, t_ray *ray);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
