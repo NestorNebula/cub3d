@@ -23,7 +23,7 @@ void	calc_step_and_side_dist(t_data *data, t_ray *ray)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dest_x = (ray->map_x + 1.0 - data->player.pos_x)
+		ray->side_dist_x = (ray->map_x + 1.0 - data->player.pos_x)
 			* ray->delta_dist_x;
 	}
 	if (ray->ray_dir_y < 0)

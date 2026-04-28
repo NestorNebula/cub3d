@@ -28,14 +28,14 @@ static double	get_wall_x(t_data *data, t_ray *ray)
 	double	wall_x;
 
 	if (ray->side == 0)
-		wall_x = data->player.pos_y + ray->perp_wall_dist * ray_ray_dir_y;
+		wall_x = data->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
 	else
 		wall_x = data->player.pos_x + ray->perp_wall_dist * ray->ray_dir_x;
 	return (wall_x - floor(wall_x));
 }
 
 static void	draw_texture_column(t_data *data,
-	t_ray *ray, t_texture *tex, t_draw draw)
+	t_ray *ray, t_texture *tex, t_draw *draw)
 {
 	double	step;
 	double	tex_pos;
@@ -43,7 +43,7 @@ static void	draw_texture_column(t_data *data,
 	int		tex_y;
 	int		y;
 
-	tex_x = (int)(get_wall_x(data, ray) * tex_width);
+	tex_x = (int)(get_wall_x(data, ray) * tex->width);
 	if (ray->side == 0 && ray->ray_dir_x > 0)
 		tex_x = tex->width - tex_x - 1;
 	if (ray->side == 1 && ray->ray_dir_y < 0)
@@ -63,11 +63,11 @@ static void	draw_texture_column(t_data *data,
 
 void	draw_wall_with_texture(t_data *data, t_ray *ray, int x)
 {
-	*t_draw		draw;
+	t_draw		draw;
 	t_texture	*tex;
 
 	draw.x = x;
 	get_draw_limits(data, ray, &draw);
 	tex = get_texture(data, ray);
-	draw_texture_column(data, ray, tex, x, &draw);
+	draw_texture_column(data, ray, tex, &draw);
 }

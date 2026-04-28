@@ -26,7 +26,7 @@ void	draw_floor_ceiling(t_data *data)
 		while (x < data->screen_width)
 		{
 			if (y < mid)
-				my_mlx_pixel_put(data, x, y, data->ceiling_floor);
+				my_mlx_pixel_put(data, x, y, data->ceiling_color);
 			else
 				my_mlx_pixel_put(data, x, y, data->floor_color);
 			x++;
