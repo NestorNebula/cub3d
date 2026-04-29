@@ -6,12 +6,11 @@
 /*   By: nhoussie <nestornebula.dev@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:08:57 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/28 16:08:58 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/29 11:17:27 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "mlx.h"
 #include "core.h"
 
 #define SCREEN_WIDTH 1920
@@ -22,7 +21,7 @@ static void	init_player(t_data *data);
 static int	init_texture(t_data *data, t_stexture *scene_texture,
 							t_texture *texture);
 
-t_data		*init_data(t_data *data, t_scene *scene, int screen_dim[2])
+t_data		*init_data(t_data *data, t_scene *scene)
 {
 	data->mlx = mlx_init();
 	if (data->mlx != NULL)
