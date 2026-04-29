@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "mlx.h"
 #include "core.h"
 
@@ -43,3 +44,26 @@ t_data		*init_data(t_data *data, t_scene *scene, int screen_dim[2])
 	data->img.img = NULL;
 	return (data);
 }
+
+static void	init_player(t_data *data)
+{
+	t_square	*start;
+	int			xy[2];
+	
+	ft_bzero(&data->player, sizeof(t_player));
+	start = data->scene->map.start;
+	get_square_coordinates(start, &data->scene->map, xy, xy + 1);
+	data->player.pos_x = (float) xy[0] + 0.5;
+	data->player.pos_y = (float) xy[0] + 0.5;
+	if (start->orientation == 'N')
+		data->player.dir_y = -1;
+	else if (start->orientation == 'S')
+		data->player.dir_y = 1;
+	else if (start->orientation == 'W')
+		data->player.dir_x = -1;
+	else if (start->orientation == 'E')
+		data->player.dir_x = 1;
+	data->player.plane_x = -data->player.dir_y * 0.66;
+	data->player.plane_y = data->player.dir_x * 0.66;
+}
+
