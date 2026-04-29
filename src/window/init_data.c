@@ -19,7 +19,8 @@
 
 static void	init_player(t_data *data);
 
-static int	init_texture(t_stexture *scene_texture, t_texture *texture);
+static int	init_texture(t_data *data, t_stexture *scene_texture,
+							t_texture *texture);
 
 t_data		*init_data(t_data *data, t_scene *scene, int screen_dim[2])
 {
@@ -34,10 +35,10 @@ t_data		*init_data(t_data *data, t_scene *scene, int screen_dim[2])
 	data->screen_height = SCREEN_HEIGHT;
 	data->scene = scene;
 	init_player(data);
-	if (init_texture(&scene->textures.no, &data->north) == 0
-			|| init_texture(&scene->textures.so, &data->south) == 0
-			|| init_texture(&scene->textures.we, &data->west) == 0
-			|| init_texture(&scene->textures.ea, &data->east) == 0)
+	if (init_texture(data, &scene->textures.no, &data->north) == 0
+			|| init_texture(data, &scene->textures.so, &data->south) == 0
+			|| init_texture(data, &scene->textures.we, &data->west) == 0
+			|| init_texture(data, &scene->textures.ea, &data->east) == 0)
 		return (NULL);
 	data->ceiling_color = scene->textures.c;
 	data->floor_color = scene->textures.f;
@@ -67,3 +68,14 @@ static void	init_player(t_data *data)
 	data->player.plane_y = data->player.dir_x * 0.66;
 }
 
+static int	init_texture(t_data *data, t_stexture *scene_texture,
+							t_texture *texture)
+{
+	texture->img = mlx_xpm_file_to_image(data->mlx, scene_texture->path,
+		&texture->width, &texture->height);
+	if (texture->img == NULL)
+		return (0);
+	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
+		&texture->line_len, &texture->endian);
+	return (texture->addr != NULL);
+}
