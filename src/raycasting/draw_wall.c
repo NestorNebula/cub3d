@@ -6,16 +6,17 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 02:14:22 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/13 02:24:14 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:12:19 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "core.h"
 
 static void	get_draw_limits(t_data *data, t_ray *ray, t_draw *draw)
 {
 	draw->height = (int)(data->screen_height / ray->perp_wall_dist);
-	draw->start = draw->height / 2 + data->screen_height / 2;
+	draw->start = -draw->height / 2 + data->screen_height / 2;
 	if (draw->start < 0)
 		draw->start = 0;
 	draw->end = draw->height / 2 + data->screen_height / 2;
@@ -48,10 +49,11 @@ static void	draw_texture_column(t_data *data,
 		tex_x = tex->width - tex_x - 1;
 	if (ray->side == 1 && ray->ray_dir_y < 0)
 		tex_x = tex->width - tex_x - 1;
-	step = 1.0 * tex->height / (draw->end - draw->start);
-	tex_pos = 0;
+	step = 1.0 * tex->height / draw->height;
+	tex_pos = (draw->start - (double) data->screen_height / 2
+			+ (double) draw->height / 2) * step;
 	y = draw->start;
-	while (y <= draw->start)
+	while (y <= draw->end)
 	{
 		tex_y = (int)tex_pos % tex->height;
 		tex_pos += step;
