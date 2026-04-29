@@ -54,8 +54,8 @@ static void	init_player(t_data *data)
 	ft_bzero(&data->player, sizeof(t_player));
 	start = data->scene->map.start;
 	get_square_coordinates(start, &data->scene->map, xy, xy + 1);
-	data->player.pos_x = (float) xy[0] + 0.5;
-	data->player.pos_y = (float) xy[0] + 0.5;
+	data->player.pos_x = (double) xy[0] + 0.5;
+	data->player.pos_y = (double) xy[1] + 0.5;
 	if (start->orientation == 'N')
 		data->player.dir_y = -1;
 	else if (start->orientation == 'S')
