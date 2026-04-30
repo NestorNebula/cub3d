@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:39:04 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/29 11:13:05 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:19:10 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		handle_hooks(t_data *data)
 static int	loop(t_data *data)
 {
 	void	*prev_img;
+	double	now;
 
 	prev_img = data->img.img;
 	data->img.img = mlx_new_image(data->mlx,
@@ -45,6 +46,9 @@ static int	loop(t_data *data)
 	}
 	if (prev_img != NULL)
 		mlx_destroy_image(data->mlx, prev_img);
+	now = get_time();
+	data->frame_time = (now - data->old_time);
+	data->old_time = now;
 	return (0);
 }
 
