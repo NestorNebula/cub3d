@@ -11,12 +11,20 @@
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <X11/keysym.h>
+#include <X11/X.h>
 #include "core.h"
 
 static int	loop(t_data *data);
 
+static int	on_key_event(int keycode, t_data *data);
+
+static int	on_close_event(t_data *data);
+
 void		handle_hooks(t_data *data)
 {
+	mlx_hook(data->win, KeyPress, KeyPressMask, (void *) on_key_event, data);
+	mlx_hook(data->win, DestroyNotify, NoEventMask, (void *) on_close_event, data);
 	mlx_loop_hook(data->mlx, (void *) loop, data);
 	mlx_loop(data->mlx);
 }
@@ -45,5 +53,16 @@ static int	loop(t_data *data)
 			break ;
 		}
 	}
+
+static int	on_key_event(int keycode, t_data *data)
+{
+	if (keycode == XK_Escape)
+		on_close_event(data);
+	return (0);
+}
+
+static int	on_close_event(t_data *data)
+{
+	mlx_loop_end(data->mlx);
 	return (0);
 }
