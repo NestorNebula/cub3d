@@ -72,5 +72,6 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_data		*init_data(t_data *data, t_scene *scene);
 void		handle_hooks(t_data *data);
 void		draw(t_data *data);
+void		move(t_dir dir, int lookflag, t_data *data);
 
 #endif
