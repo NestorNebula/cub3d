@@ -13,23 +13,18 @@
 #include <mlx.h>
 #include "core.h"
 
-static int	loop(void);
-
-static t_data	*access_data(void *ptr);
+static int	loop(t_data *data);
 
 void		handle_hooks(t_data *data)
 {
-	access_data(data);
-	mlx_loop_hook(data->mlx, loop, data);
+	mlx_loop_hook(data->mlx, (void *) loop, data);
 	mlx_loop(data->mlx);
 }
 
-static int	loop(void)
+static int	loop(t_data *data)
 {
-	t_data	*data;
 	void	*prev_img;
 
-	data = access_data(NULL);
 	while (data->win != NULL)
 	{
 		prev_img = data->img.img;
@@ -51,12 +46,4 @@ static int	loop(void)
 		}
 	}
 	return (0);
-}
-
-static t_data	*access_data(void *ptr)
-{
-	static t_data	*data = NULL;
-	if (ptr != NULL)
-		data = ptr;
-	return (data);
 }
