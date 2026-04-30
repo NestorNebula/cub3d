@@ -40,3 +40,13 @@ t_square	*square_from_coordinates(t_map *map, int x, int y)
 		return (NULL);
 	return (row->squares + x);
 }
+
+bool		is_walkable(t_map *map, int x, int y)
+{
+	t_square *square;
+
+	square = square_from_coordinates(map, x, y);
+	if (square == NULL)
+		return (NULL);
+	return (square->type != S_WALL);
+}
