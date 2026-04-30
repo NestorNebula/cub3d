@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "core.h"
+#include "scene.h"
 
 static void	move_top(t_data *data, t_map *map, double speed);
 
@@ -41,21 +42,17 @@ void		move(t_dir dir, int lookflag, t_data *data)
 static void	move_top(t_data *data, t_map *map, double speed)
 {
 	
-	if (map->rows[(int)(data->player.pos_y)].squares[(int)(data->player.pos_x
-			+ data->player.dir_x * speed)].type != S_WALL)
+	if (is_walkable(map, data->player.pos_x + data->player.dir_x * speed, data->player.pos_y))
 		data->player.pos_x += data->player.dir_x * speed;
-	if (map->rows[(int)(data->player.pos_y + data->player.dir_y
-			* speed)].squares[(int)(data->player.pos_x)].type != S_WALL)
+	if (is_walkable(map, data->player.pos_x, data->player.pos_y + data->player.dir_y * speed))
 		data->player.pos_y += data->player.dir_y * speed;
 }
 
 static void move_down(t_data *data, t_map *map, double speed)
 {
-	if (map->rows[(int)(data->player.pos_y)].squares[(int)(data->player.pos_x
-			- data->player.dir_x * speed)].type != S_WALL)
+	if (is_walkable(map, data->player.pos_x - data->player.dir_x * speed, data->player.pos_y))
 		data->player.pos_x -= data->player.dir_x * speed;
-	if (map->rows[(int)(data->player.pos_y - data->player.dir_y
-			* speed)].squares[(int)(data->player.pos_x)].type != S_WALL)
+	if (is_walkable(map, data->player.pos_x, data->player.pos_y - data->player.dir_y * speed))
 		data->player.pos_y -= data->player.dir_y * speed;
 }
 
@@ -72,15 +69,13 @@ static void	move_left(int lookflag, t_data *data, t_map *map, double speed)
 		data->player.plane_x = data->player.plane_x * cos(-speed)
 			- data->player.plane_y * sin(-speed);
 		data->player.plane_y = old_player.plane_x * sin(-speed)
-			+ data->player.plane_y * cos(speed);
+			+ data->player.plane_y * cos(-speed);
 	}
 	else
 	{
-		if (map->rows[(int)(data->player.pos_y)].squares[(int)(data->player.pos_x
-				- data->player.plane_x * speed)].type != S_WALL)
+		if (is_walkable(map, data->player.pos_x - data->player.plane_x * speed, data->player.pos_y))
 			data->player.pos_x -= data->player.plane_x * speed;
-		if (map->rows[(int)(data->player.pos_y - data->player.plane_y
-				* speed)].squares[(int)(data->player.pos_x)].type != S_WALL)
+		if (is_walkable(map, data->player.pos_x, data->player.pos_y - data->player.plane_y * speed))
 			data->player.pos_y -= data->player.plane_y * speed;
 	}
 }
@@ -102,11 +97,9 @@ static void move_right(int lookflag, t_data *data, t_map *map, double speed)
 	}
 	else
 	{
-		if (map->rows[(int)(data->player.pos_y)].squares[(int)(data->player.pos_x
-				+ data->player.plane_x * speed)].type != S_WALL)
+		if (is_walkable(map, data->player.pos_x + data->player.plane_x * speed, data->player.pos_y))
 			data->player.pos_x += data->player.plane_x * speed;
-		if (map->rows[(int)(data->player.pos_y + data->player.plane_y
-				* speed)].squares[(int)(data->player.pos_x)].type != S_WALL)
+		if (is_walkable(map, data->player.pos_x, data->player.pos_y + data->player.plane_y * speed))
 			data->player.pos_y += data->player.plane_y * speed;
 	}
 }
