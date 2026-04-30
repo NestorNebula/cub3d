@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:13:52 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/29 11:18:14 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/30 12:57:39 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main(int argc, char **argv)
 	if (scene == NULL)
 		return (1);
 	if (init_data(&data, scene) == NULL)
+	{
+		free_scene(scene);
 		return (1);
+	}
 	handle_hooks(&data);
 	return (0);
 }
