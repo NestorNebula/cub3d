@@ -33,26 +33,20 @@ static int	loop(t_data *data)
 {
 	void	*prev_img;
 
-	while (data->win != NULL)
+	prev_img = data->img.img;
+	data->img.img = mlx_new_image(data->mlx,
+		data->screen_width, data->screen_height);
+	if (data->img.img != NULL)
 	{
-		prev_img = data->img.img;
-		data->img.img = mlx_new_image(data->mlx,
-			data->screen_width, data->screen_height);
-		if (data->img.img != NULL)
-		{
-			data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
-				&data->img.line_len, &data->img.endian);
-			draw(data);
-			mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-		}
-		if (prev_img != NULL)
-			mlx_destroy_image(data->mlx, prev_img);
-		if (data->img.img == NULL)
-		{
-			mlx_loop_end(data->mlx);
-			break ;
-		}
+		data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
+			&data->img.line_len, &data->img.endian);
+		draw(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	}
+	if (prev_img != NULL)
+		mlx_destroy_image(data->mlx, prev_img);
+	return (0);
+}
 
 static int	on_key_event(int keycode, t_data *data)
 {
