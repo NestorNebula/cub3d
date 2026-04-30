@@ -16,13 +16,23 @@ void		free_data(t_data *data)
 {
 	if (data == NULL)
 		return ;
-	mlx_destroy_image(data->mlx, data->img.img);
-	mlx_destroy_image(data->mlx, data->north.img);
-	mlx_destroy_image(data->mlx, data->south.img);
-	mlx_destroy_image(data->mlx, data->west.img);
-	mlx_destroy_image(data->mlx, data->east.img);
-	mlx_destroy_window(data->mlx, data->win);
-	free_scene(data->scene);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if (data->img.img != NULL)
+		mlx_destroy_image(data->mlx, data->img.img);
+	if (data->img.img != NULL)
+		mlx_destroy_image(data->mlx, data->north.img);
+	if (data->img.img != NULL)
+		mlx_destroy_image(data->mlx, data->south.img);
+	if (data->img.img != NULL)
+		mlx_destroy_image(data->mlx, data->west.img);
+	if (data->img.img != NULL)
+		mlx_destroy_image(data->mlx, data->east.img);
+	if (data->win != NULL)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->scene != NULL)
+		free_scene(data->scene);
+	if (data->mlx != NULL)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
 }
