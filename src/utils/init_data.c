@@ -6,7 +6,7 @@
 /*   By: nhoussie <nestornebula.dev@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:08:57 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/29 11:17:27 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:15:32 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_data		*init_data(t_data *data, t_scene *scene)
 	data->ceiling_color = scene->textures.c;
 	data->floor_color = scene->textures.f;
 	data->img.img = NULL;
+	data->old_time = get_time();
 	return (data);
 }
 
