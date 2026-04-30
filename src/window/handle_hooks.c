@@ -56,6 +56,9 @@ static int	on_key_event(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 		on_close_event(data);
+	else if (keycode == XK_w || keycode == XK_s || keycode == XK_a
+		|| keycode == XK_d || keycode == XK_Left || keycode == XK_Right)
+		move(keycode, keycode == XK_Left || keycode == XK_Right, data);
 	return (0);
 }
 
