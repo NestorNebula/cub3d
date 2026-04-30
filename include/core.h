@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/29 11:17:38 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:17:51 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <math.h>
 # include <stdlib.h>
+#include <X11/keysym.h>
 # include <mlx.h>
 # include "player.h"
 # include "ray.h"
-#include "scene.h"
+# include "scene.h"
 
 typedef struct s_texture
 {
@@ -46,7 +47,18 @@ typedef struct s_data
 	t_texture	west;
 	int			ceiling_color;
 	int			floor_color;
+	double		old_time;
+	double		frame_time;
 }	t_data;
+
+typedef enum e_dir {
+	D_UP = XK_w,
+	D_DOWN = XK_s,
+	D_LEFT = XK_a,
+	D_RIGHT = XK_d,
+	D_LEFTL = XK_Left,
+	D_RIGHTL = XK_Right,
+}	t_dir;
 
 void		init_ray(t_data *data, t_ray *ray, int x);
 void		calc_step_and_side_dist(t_data *data, t_ray *ray);
