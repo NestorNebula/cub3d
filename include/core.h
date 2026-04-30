@@ -74,5 +74,6 @@ void		handle_hooks(t_data *data);
 void		draw(t_data *data);
 void		move(t_dir dir, int lookflag, t_data *data);
 double		get_time(void);
+void		free_data(t_data *data);
 
 #endif
