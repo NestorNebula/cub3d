@@ -30,6 +30,7 @@
 # define LOG_NOT_ENCLOSED "Error\nSquares not enclosed by walls"
 
 # include <stddef.h>
+# include <stdbool.h>
 
 # define SQUARE_TYPES "01 "
 # define ORIENTATION_TYPES "NSEW"
@@ -169,5 +170,17 @@ int			get_square_coordinates(t_square *square, t_map *map,
  * @return A pointer to a square structure if found, a NULL pointer otherwise
  */
 t_square	*square_from_coordinates(t_map *map, int x, int y);
+
+/**
+ * Searches inside a map for a square at given coordinates.
+ * If it exits, checks if that square can be walked on,
+ * i.e. that square is not a wall.
+ *
+ * @param map A pointer to a map structure
+ * @param x The position of the searched square in the x axis
+ * @param y The position of the searched square in the y axis
+ * @return A boolean defining if a walkable square exists at coordinates x,y
+ */
+bool		is_walkable(t_map *map, int x, int y);
 
 #endif // !SCENE_H
