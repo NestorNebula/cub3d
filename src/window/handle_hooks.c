@@ -65,5 +65,6 @@ static int	on_key_event(int keycode, t_data *data)
 static int	on_close_event(t_data *data)
 {
 	mlx_loop_end(data->mlx);
-	return (0);
+	free_data(data);
+	exit(EXIT_SUCCESS);
 }
