@@ -52,12 +52,12 @@ typedef struct s_data
 }	t_data;
 
 typedef enum e_dir {
-	D_UP = XK_w,
-	D_DOWN = XK_s,
-	D_LEFT = XK_a,
-	D_RIGHT = XK_d,
-	D_LEFTL = XK_Left,
-	D_RIGHTL = XK_Right,
+	D_UP = 0x01,
+	D_DOWN = 0x02,
+	D_LEFT = 0x04,
+	D_RIGHT = 0x08,
+	D_LEFTL = 0x10,
+	D_RIGHTL = 0x20,
 }	t_dir;
 
 void		init_ray(t_data *data, t_ray *ray, int x);
@@ -72,7 +72,7 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_data		*init_data(t_data *data, t_scene *scene);
 void		handle_hooks(t_data *data);
 void		draw(t_data *data);
-void		move(t_dir dir, int lookflag, t_data *data);
+void		move(int moveflag, t_data *data);
 double		get_time(void);
 void		free_data(t_data *data);
 
