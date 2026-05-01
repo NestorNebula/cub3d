@@ -21,6 +21,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	int		moveflag;
 }	t_player;
 
 #endif
