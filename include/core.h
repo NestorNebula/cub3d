@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/01 15:06:23 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:08:38 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@
 # include "ray.h"
 # include "scene.h"
 
-# define D_UP = 0x01,
-# define D_DOWN = 0x02,
-# define D_LEFT = 0x04,
-# define D_RIGHT = 0x08,
-# define D_LEFTL = 0x10,
-# define D_RIGHTL = 0x20,
+# define M_UP 0x01
+# define M_DOWN 0x02
+# define M_LEFT 0x04
+# define M_RIGHT 0x08
+# define MOVE (M_UP | M_DOWN | M_LEFT | M_RIGHT)
+# define R_LEFT 0x10
+# define R_RIGHT 0x20
+# define ROTATE (R_LEFT | R_RIGHT)
 
 typedef struct s_texture
 {
