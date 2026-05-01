@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/30 10:17:51 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:06:23 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include "player.h"
 # include "ray.h"
 # include "scene.h"
+
+# define D_UP = 0x01,
+# define D_DOWN = 0x02,
+# define D_LEFT = 0x04,
+# define D_RIGHT = 0x08,
+# define D_LEFTL = 0x10,
+# define D_RIGHTL = 0x20,
 
 typedef struct s_texture
 {
@@ -50,15 +57,6 @@ typedef struct s_data
 	double		old_time;
 	double		frame_time;
 }	t_data;
-
-typedef enum e_dir {
-	D_UP = 0x01,
-	D_DOWN = 0x02,
-	D_LEFT = 0x04,
-	D_RIGHT = 0x08,
-	D_LEFTL = 0x10,
-	D_RIGHTL = 0x20,
-}	t_dir;
 
 void		init_ray(t_data *data, t_ray *ray, int x);
 void		calc_step_and_side_dist(t_data *data, t_ray *ray);
