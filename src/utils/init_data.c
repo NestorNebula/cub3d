@@ -66,6 +66,7 @@ static void	init_player(t_data *data)
 		data->player.dir_x = 1;
 	data->player.plane_x = -data->player.dir_y * 0.66;
 	data->player.plane_y = data->player.dir_x * 0.66;
+	data->player.moveflag = 0x00;
 }
 
 static int	init_texture(t_data *data, t_stexture *scene_texture,
