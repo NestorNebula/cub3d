@@ -17,13 +17,16 @@
 
 static int	loop(t_data *data);
 
-static int	on_key_event(int keycode, t_data *data);
+static int	on_key_press_event(int keycode, t_data *data);
+
+static int	on_key_release_event(int keycode, t_data *data);
 
 static int	on_close_event(t_data *data);
 
 void		handle_hooks(t_data *data)
 {
-	mlx_hook(data->win, KeyPress, KeyPressMask, (void *) on_key_event, data);
+	mlx_hook(data->win, KeyPress, KeyPressMask, (void *) on_key_press_event, data);
+	mlx_hook(data->win, KeyRelease, KeyReleaseMask, (void *) on_key_release_event, data);
 	mlx_hook(data->win, DestroyNotify, NoEventMask, (void *) on_close_event, data);
 	mlx_loop_hook(data->mlx, (void *) loop, data);
 	mlx_loop(data->mlx);
@@ -52,13 +55,39 @@ static int	loop(t_data *data)
 	return (0);
 }
 
-static int	on_key_event(int keycode, t_data *data)
+static int	on_key_press_event(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 		on_close_event(data);
-	else if (keycode == XK_w || keycode == XK_s || keycode == XK_a
-		|| keycode == XK_d || keycode == XK_Left || keycode == XK_Right)
-		move(keycode, keycode == XK_Left || keycode == XK_Right, data);
+	else if (keycode == XK_w)
+		data->player.moveflag |= D_UP;
+	else if (keycode == XK_s)
+		data->player.moveflag |= D_DOWN;
+	else if (keycode == XK_a)
+		data->player.moveflag |= D_LEFT;
+	else if (keycode == XK_d)
+		data->player.moveflag |= D_RIGHT;
+	else if (keycode == XK_Left)
+		data->player.moveflag |= D_LEFTL;
+	else if (keycode == XK_Right)
+		data->player.moveflag |= D_RIGHTL;
+	return (0);
+}
+
+static int	on_key_release_event(int keycode, t_data *data)
+{
+	if (keycode == XK_w)
+		data->player.moveflag &= ~D_UP;
+	else if (keycode == XK_s)
+		data->player.moveflag &= ~D_DOWN;
+	else if (keycode == XK_a)
+		data->player.moveflag &= ~D_LEFT;
+	else if (keycode == XK_d)
+		data->player.moveflag &= ~D_RIGHT;
+	else if (keycode == XK_Left)
+		data->player.moveflag &= ~D_LEFTL;
+	else if (keycode == XK_Right)
+		data->player.moveflag &= ~D_RIGHTL;
 	return (0);
 }
 
