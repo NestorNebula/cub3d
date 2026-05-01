@@ -51,7 +51,7 @@ static int	loop(t_data *data)
 			if (data->player.moveflag & MOVE)
 				move(data->player.moveflag, data);
 			if (data->player.moveflag & ROTATE)
-				move(data->player.moveflag, data);
+				rotate(data->player.moveflag, data);
 			draw(data);
 			mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 		}
