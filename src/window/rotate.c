@@ -12,9 +12,9 @@
 
 #include "core.h"
 
-static void	rotate_left(t_data *data, t_map *map, double speed);
+static void	rotate_left(t_data *data, double speed);
 
-static void	rotate_right(t_data *data, t_map *map, double speed);
+static void	rotate_right(t_data *data, double speed);
 
 void	rotate(int moveflag, t_data *data)
 {
@@ -22,12 +22,12 @@ void	rotate(int moveflag, t_data *data)
 
 	rot_speed = data->frame_time * 3.0;
 	if (moveflag & R_LEFT)
-		rotate_left(data, &data->scene->map, rot_speed);
+		rotate_left(data, rot_speed);
 	if (moveflag & R_RIGHT)
-		rotate_left(data, &data->scene->map, rot_speed);
+		rotate_right(data, rot_speed);
 }
 
-static void	rotate_left(t_data *data, t_map *map, double speed)
+static void	rotate_left(t_data *data, double speed)
 {
 	const t_player	old_player = data->player;
 
@@ -41,7 +41,7 @@ static void	rotate_left(t_data *data, t_map *map, double speed)
 		+ data->player.plane_y * cos(-speed);
 }
 
-static void	rotate_right(t_data *data, t_map *map, double speed)
+static void	rotate_right(t_data *data, double speed)
 {
 	const t_player	old_player = data->player;
 
