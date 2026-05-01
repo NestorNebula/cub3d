@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:39:04 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/30 10:19:10 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:11:00 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ static int	loop(t_data *data)
 		{
 			data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
 				&data->img.line_len, &data->img.endian);
-			if (data->player.moveflag)
+			if (data->player.moveflag & MOVE)
+				move(data->player.moveflag, data);
+			if (data->player.moveflag & ROTATE)
 				move(data->player.moveflag, data);
 			draw(data);
 			mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
@@ -64,34 +66,34 @@ static int	on_key_press_event(int keycode, t_data *data)
 	if (keycode == XK_Escape)
 		on_close_event(data);
 	else if (keycode == XK_w)
-		data->player.moveflag |= D_UP;
+		data->player.moveflag |= M_UP;
 	else if (keycode == XK_s)
-		data->player.moveflag |= D_DOWN;
+		data->player.moveflag |= M_DOWN;
 	else if (keycode == XK_a)
-		data->player.moveflag |= D_LEFT;
+		data->player.moveflag |= M_LEFT;
 	else if (keycode == XK_d)
-		data->player.moveflag |= D_RIGHT;
+		data->player.moveflag |= M_RIGHT;
 	else if (keycode == XK_Left)
-		data->player.moveflag |= D_LEFTL;
+		data->player.moveflag |= R_LEFT;
 	else if (keycode == XK_Right)
-		data->player.moveflag |= D_RIGHTL;
+		data->player.moveflag |= R_RIGHT;
 	return (0);
 }
 
 static int	on_key_release_event(int keycode, t_data *data)
 {
 	if (keycode == XK_w)
-		data->player.moveflag &= ~D_UP;
+		data->player.moveflag &= ~M_UP;
 	else if (keycode == XK_s)
-		data->player.moveflag &= ~D_DOWN;
+		data->player.moveflag &= ~M_DOWN;
 	else if (keycode == XK_a)
-		data->player.moveflag &= ~D_LEFT;
+		data->player.moveflag &= ~M_LEFT;
 	else if (keycode == XK_d)
-		data->player.moveflag &= ~D_RIGHT;
+		data->player.moveflag &= ~M_RIGHT;
 	else if (keycode == XK_Left)
-		data->player.moveflag &= ~D_LEFTL;
+		data->player.moveflag &= ~R_LEFT;
 	else if (keycode == XK_Right)
-		data->player.moveflag &= ~D_RIGHTL;
+		data->player.moveflag &= ~R_RIGHT;
 	return (0);
 }
 
