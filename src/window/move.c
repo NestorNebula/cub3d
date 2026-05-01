@@ -60,6 +60,14 @@ static void	move_left(int moveflag, t_data *data, double mspeed, double rspeed)
 	const t_player	old_player = data->player;
 	t_map			*map;
 
+	map = &data->scene->map;
+	if (moveflag & D_LEFT)
+	{
+		if (is_walkable(map, data->player.pos_x - data->player.plane_x * mspeed, data->player.pos_y))
+			data->player.pos_x -= data->player.plane_x * mspeed;
+		if (is_walkable(map, data->player.pos_x, data->player.pos_y - data->player.plane_y * mspeed))
+			data->player.pos_y -= data->player.plane_y * mspeed;
+	}
 	if (moveflag & D_LEFTL)
 	{
 		data->player.dir_x = data->player.dir_x * cos(-rspeed)
@@ -71,14 +79,6 @@ static void	move_left(int moveflag, t_data *data, double mspeed, double rspeed)
 		data->player.plane_y = old_player.plane_x * sin(-rspeed)
 			+ data->player.plane_y * cos(-rspeed);
 	}
-	map = &data->scene->map;
-	if (moveflag & D_LEFT)
-	{
-		if (is_walkable(map, data->player.pos_x - data->player.plane_x * mspeed, data->player.pos_y))
-			data->player.pos_x -= data->player.plane_x * mspeed;
-		if (is_walkable(map, data->player.pos_x, data->player.pos_y - data->player.plane_y * mspeed))
-			data->player.pos_y -= data->player.plane_y * mspeed;
-	}
 }
 
 static void move_right(int moveflag, t_data *data, double mspeed, double rspeed)
@@ -86,6 +86,14 @@ static void move_right(int moveflag, t_data *data, double mspeed, double rspeed)
 	const t_player	old_player = data->player;
 	t_map			*map;
 
+	map = &data->scene->map;
+	if (moveflag & D_RIGHT)
+	{
+		if (is_walkable(map, data->player.pos_x + data->player.plane_x * mspeed, data->player.pos_y))
+			data->player.pos_x += data->player.plane_x * mspeed;
+		if (is_walkable(map, data->player.pos_x, data->player.pos_y + data->player.plane_y * mspeed))
+			data->player.pos_y += data->player.plane_y * mspeed;
+	}
 	if (moveflag & D_RIGHTL)
 	{
 		data->player.dir_x = data->player.dir_x * cos(rspeed)
@@ -96,13 +104,5 @@ static void move_right(int moveflag, t_data *data, double mspeed, double rspeed)
 			- data->player.plane_y * sin(rspeed);
 		data->player.plane_y = old_player.plane_x * sin(rspeed)
 			+ data->player.plane_y * cos(rspeed);
-	}
-	map = &data->scene->map;
-	if (moveflag & D_RIGHT)
-	{
-		if (is_walkable(map, data->player.pos_x + data->player.plane_x * mspeed, data->player.pos_y))
-			data->player.pos_x += data->player.plane_x * mspeed;
-		if (is_walkable(map, data->player.pos_x, data->player.pos_y + data->player.plane_y * mspeed))
-			data->player.pos_y += data->player.plane_y * mspeed;
 	}
 }
