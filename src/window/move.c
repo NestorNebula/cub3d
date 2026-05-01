@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 09:48:05 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/01 15:03:51 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:09:51 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void		move(int moveflag, t_data *data)
 	double	move_speed;
 
 	move_speed = data->frame_time * 5.0;
-	if (moveflag & D_UP)
+	if (moveflag & M_UP)
 		move_top(data, &data->scene->map, move_speed);
-	if (moveflag & D_DOWN)
+	if (moveflag & M_DOWN)
 		move_down(data, &data->scene->map, move_speed);
-	if ((moveflag & D_LEFT) || (moveflag & D_LEFTL))
+	if (moveflag & M_LEFT)
 		move_left(data, &data->scene->map, move_speed);
-	if ((moveflag & D_RIGHT) || (moveflag & D_RIGHTL))
+	if (moveflag & M_RIGHT)
 		move_right(data, &data->scene->map, move_speed);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:58:01 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/01 15:04:35 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/01 15:10:01 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	rotate(int moveflag, t_data *data)
 	double	rot_speed;
 
 	rot_speed = data->frame_time * 3.0;
-	if (moveflag & D_LEFTL)
+	if (moveflag & R_LEFT)
 		rotate_left(data, &data->scene->map, rot_speed);
-	if (moveflag & D_RIGHTL)
+	if (moveflag & R_RIGHT)
 		rotate_left(data, &data->scene->map, rot_speed);
 }
 
