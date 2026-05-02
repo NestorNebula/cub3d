@@ -6,12 +6,11 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 09:48:05 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/01 15:09:51 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:18:27 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
-#include "scene.h"
+#include "data.h"
 
 static void	move_top(t_data *data, t_map *map, double speed);
 

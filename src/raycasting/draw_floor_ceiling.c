@@ -6,11 +6,12 @@
 /*   By: cmonmire <cmonmire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 08:46:47 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/02 09:41:03 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:20:57 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "window.h"
+#include "utils.h"
 
 void draw_floor_ceiling(t_data *data, t_draw *draw, t_ray *ray)
 {

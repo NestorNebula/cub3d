@@ -6,11 +6,11 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 09:01:46 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/14 11:08:57 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:24:41 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "raycasting.h"
 
 t_texture	*get_texture(t_data *data, t_ray *ray)
 {

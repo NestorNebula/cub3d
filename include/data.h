@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.h                                             :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/02 09:41:19 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:14:17 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#ifndef DATA_H
+# define DATA_H
 
 # include <math.h>
 # include <stdlib.h>
-#include <X11/keysym.h>
+# include <X11/keysym.h>
 # include <mlx.h>
 # include "player.h"
-# include "ray.h"
 # include "scene.h"
-
-# define M_UP 0x01
-# define M_DOWN 0x02
-# define M_LEFT 0x04
-# define M_RIGHT 0x08
-# define MOVE (M_UP | M_DOWN | M_LEFT | M_RIGHT)
-# define R_LEFT 0x10
-# define R_RIGHT 0x20
-# define ROTATE (R_LEFT | R_RIGHT)
 
 typedef struct s_texture
 {
@@ -60,24 +50,7 @@ typedef struct s_data
 	double		frame_time;
 }	t_data;
 
-void		init_ray(t_data *data, t_ray *ray, int x);
-void		calc_step_and_side_dist(t_data *data, t_ray *ray);
-void		calc_wall_dist(t_data *data, t_ray *ray);
-void		dda(t_data *data, t_ray *ray);
-void		draw_floor_ceiling(t_data *data, t_draw *draw, t_ray *ray);
-void		draw_wall_with_texture(t_data *data, t_ray *ray, int x);
-int			get_texture_color(t_texture *tex, int x, int y);
-t_texture	*get_texture(t_data *data, t_ray *ray);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_data		*init_data(t_data *data, t_scene *scene);
-void		handle_hooks(t_data *data);
-void		draw(t_data *data);
-void		move(int moveflag, t_data *data);
-void		rotate(int moveflag, t_data *data);
-double		get_time(void);
 void		free_data(t_data *data);
-int			shade_wall(int color, t_ray *ray);
-int			shade_floor(int color, int y, t_data *data);
-int			shade_ceiling(int color, int y, t_data *data);
 
 #endif

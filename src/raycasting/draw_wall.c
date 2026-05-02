@@ -6,12 +6,13 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 02:14:22 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/02 09:41:30 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:21:46 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "core.h"
+#include "window.h"
+#include "utils.h"
 
 static void	get_draw_limits(t_data *data, t_ray *ray, t_draw *draw)
 {

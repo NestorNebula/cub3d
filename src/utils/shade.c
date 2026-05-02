@@ -6,11 +6,11 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 08:17:34 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/02 09:39:50 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:24:27 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "raycasting.h"
 
 static int	shade(int color, double factor);
 
