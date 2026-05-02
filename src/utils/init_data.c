@@ -24,6 +24,8 @@ static int	init_texture(t_data *data, t_stexture *scene_texture,
 
 t_data		*init_data(t_data *data, t_scene *scene)
 {
+	ft_bzero(data, sizeof(t_data));
+	data->scene = scene;
 	data->mlx = mlx_init();
 	if (data->mlx != NULL)
 		data->win = mlx_new_window(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
@@ -33,7 +35,6 @@ t_data		*init_data(t_data *data, t_scene *scene)
 		return (NULL);
 	data->screen_width = SCREEN_WIDTH;
 	data->screen_height = SCREEN_HEIGHT;
-	data->scene = scene;
 	init_player(data);
 	if (init_texture(data, &scene->textures.no, &data->north) == 0
 			|| init_texture(data, &scene->textures.so, &data->south) == 0
