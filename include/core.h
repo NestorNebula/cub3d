@@ -64,7 +64,7 @@ void		init_ray(t_data *data, t_ray *ray, int x);
 void		calc_step_and_side_dist(t_data *data, t_ray *ray);
 void		calc_wall_dist(t_data *data, t_ray *ray);
 void		dda(t_data *data, t_ray *ray);
-void		draw_floor_ceiling(t_data *data);
+void		draw_floor_ceiling(t_data *data, t_draw *draw, t_ray *ray);
 void		draw_wall_with_texture(t_data *data, t_ray *ray, int x);
 int			get_texture_color(t_texture *tex, int x, int y);
 t_texture	*get_texture(t_data *data, t_ray *ray);
