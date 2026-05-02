@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_data(&data, scene) == NULL)
 	{
-		free_scene(scene);
+		free_data(&data);
 		return (1);
 	}
 	handle_hooks(&data);
