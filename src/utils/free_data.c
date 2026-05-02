@@ -18,13 +18,13 @@ void		free_data(t_data *data)
 		return ;
 	if (data->img.img != NULL)
 		mlx_destroy_image(data->mlx, data->img.img);
-	if (data->img.img != NULL)
+	if (data->north.img != NULL)
 		mlx_destroy_image(data->mlx, data->north.img);
-	if (data->img.img != NULL)
+	if (data->south.img != NULL)
 		mlx_destroy_image(data->mlx, data->south.img);
-	if (data->img.img != NULL)
+	if (data->west.img != NULL)
 		mlx_destroy_image(data->mlx, data->west.img);
-	if (data->img.img != NULL)
+	if (data->east.img != NULL)
 		mlx_destroy_image(data->mlx, data->east.img);
 	if (data->win != NULL)
 		mlx_destroy_window(data->mlx, data->win);
