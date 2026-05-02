@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_img.c                                         :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:47:47 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/29 11:04:04 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 09:41:38 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		draw(t_data *data)
 	if (data == NULL)
 		return ;
 	x = 0;
-	draw_floor_ceiling(data);
 	while (x < data->screen_width)
 	{
 		init_ray(data, &ray, x);
