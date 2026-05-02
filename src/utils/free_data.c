@@ -6,11 +6,11 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 13:03:54 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/30 13:09:21 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:19:31 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "data.h"
 
 void		free_data(t_data *data)
 {

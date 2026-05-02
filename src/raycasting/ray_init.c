@@ -6,11 +6,11 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 00:11:39 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/13 00:29:53 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:24:55 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "raycasting.h"
 
 void	init_ray(t_data *data, t_ray *ray, int x)
 {

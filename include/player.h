@@ -6,12 +6,21 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:31:09 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/12 23:34:22 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:18:09 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
+
+# define M_UP 0x01
+# define M_DOWN 0x02
+# define M_LEFT 0x04
+# define M_RIGHT 0x08
+# define MOVE (M_UP | M_DOWN | M_LEFT | M_RIGHT)
+# define R_LEFT 0x10
+# define R_RIGHT 0x20
+# define ROTATE (R_LEFT | R_RIGHT)
 
 typedef struct s_player
 {

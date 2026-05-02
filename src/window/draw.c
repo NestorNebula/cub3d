@@ -6,11 +6,12 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:47:47 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/02 09:41:38 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:23:53 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "data.h"
+#include "raycasting.h"
 
 void		draw(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 01:41:06 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/28 16:10:28 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:25:35 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "raycasting.h"
 
 void	dda(t_data *data, t_ray *ray)
 {

@@ -6,12 +6,13 @@
 /*   By: nhoussie <nestornebula.dev@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:08:57 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/30 10:15:32 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:19:25 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "data.h"
 #include "libft.h"
-#include "core.h"
+#include "utils.h"
 
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080

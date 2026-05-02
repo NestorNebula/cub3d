@@ -6,11 +6,11 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:58:01 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/01 15:10:01 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:18:38 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "data.h"
 
 static void	rotate_left(t_data *data, double speed);
 

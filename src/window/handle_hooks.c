@@ -6,14 +6,15 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:39:04 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/01 15:11:00 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:14:51 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <X11/keysym.h>
 #include <X11/X.h>
-#include "core.h"
+#include "window.h"
+#include "utils.h"
 
 static int	loop(t_data *data);
 

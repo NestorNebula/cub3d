@@ -6,11 +6,11 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 00:38:30 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/13 00:50:55 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:25:02 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "raycasting.h"
 
 void	calc_step_and_side_dist(t_data *data, t_ray *ray)
 {

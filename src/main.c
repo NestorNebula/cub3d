@@ -6,13 +6,13 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:13:52 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/30 12:57:39 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:18:59 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
-#include "core.h"
+#include "window.h"
 
 int	main(int argc, char **argv)
 {

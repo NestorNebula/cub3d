@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:10:15 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/02 10:18:44 by nhoussie         ###   ########.fr       */
+/*   Created: 2026/05/02 10:02:42 by nhoussie          #+#    #+#             */
+/*   Updated: 2026/05/02 10:25:45 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#ifndef WINDOW_H
+# define WINDOW_H
 
-void my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char		*pixel;
-	t_texture	*img;
+# include "data.h"
 
-	img = &data->img;
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int *)pixel = color;
-}
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		handle_hooks(t_data *data);
+void		draw(t_data *data);
+void		move(int moveflag, t_data *data);
+void		rotate(int moveflag, t_data *data);
+
+#endif // !WINDOW_H

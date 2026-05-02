@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:10:15 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/02 10:18:44 by nhoussie         ###   ########.fr       */
+/*   Created: 2026/05/02 10:00:56 by nhoussie          #+#    #+#             */
+/*   Updated: 2026/05/02 10:25:25 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char		*pixel;
-	t_texture	*img;
+# include "raycasting.h"
 
-	img = &data->img;
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int *)pixel = color;
-}
+int			shade_wall(int color, t_ray *ray);
+int			shade_floor(int color, int y, t_data *data);
+int			shade_ceiling(int color, int y, t_data *data);
+double		get_time(void);
+
+#endif // !UTILS_H

@@ -6,11 +6,11 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 01:59:50 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/13 02:06:25 by cmonmire         ###   ########.fr       */
+/*   Updated: 2026/05/02 10:24:35 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "core.h"
+#include "raycasting.h"
 
 void	calc_wall_dist(t_data *data, t_ray *ray)
 {
