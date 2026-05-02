@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/01 15:08:38 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 09:41:19 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,8 @@ void		move(int moveflag, t_data *data);
 void		rotate(int moveflag, t_data *data);
 double		get_time(void);
 void		free_data(t_data *data);
+int			shade_wall(int color, t_ray *ray);
+int			shade_floor(int color, int y, t_data *data);
+int			shade_ceiling(int color, int y, t_data *data);
 
 #endif
