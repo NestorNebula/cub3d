@@ -6,7 +6,7 @@
 /*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 02:14:22 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/04/29 16:12:19 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/02 09:41:30 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ static void	draw_texture_column(t_data *data,
 		tex_y = (int)tex_pos % tex->height;
 		tex_pos += step;
 		my_mlx_pixel_put(data, draw->x, y,
-			get_texture_color(tex, tex_x, tex_y));
+			shade_wall(get_texture_color(tex, tex_x, tex_y), ray));
 		y++;
 	}
+	draw_floor_ceiling(data, draw, ray);
 }
 
 void	draw_wall_with_texture(t_data *data, t_ray *ray, int x)
