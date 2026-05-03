@@ -1,9 +1,9 @@
-F 0,0,0
-NO textures/no.xpm
-C 255,255,255
-EA textures/ea.xpm
-SO textures/so.xpm
-WE textures/we.xpm
+F 60,52,46
+NO textures/north.xpm
+C 110,105,95
+EA textures/east.xpm
+SO textures/south.xpm
+WE textures/west.xpm
 
 111
 1N1
