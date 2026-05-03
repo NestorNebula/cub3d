@@ -13,7 +13,7 @@
 #include "window.h"
 #include "utils.h"
 
-void draw_floor_ceiling(t_data *data, t_draw *draw, t_ray *ray)
+void	draw_floor_ceiling(t_data *data, t_draw *draw, t_ray *ray)
 {
 	int	y;
 
@@ -21,13 +21,15 @@ void draw_floor_ceiling(t_data *data, t_draw *draw, t_ray *ray)
 	y = 0;
 	while (y < draw->start)
 	{
-		my_mlx_pixel_put(data, draw->x, y, shade_ceiling(data->ceiling_color, y, data));
+		my_mlx_pixel_put(data, draw->x, y,
+			shade_ceiling(data->ceiling_color, y, data));
 		y++;
 	}
 	y = draw->end;
 	while (y < data->screen_height)
 	{
-		my_mlx_pixel_put(data, draw->x, y, shade_floor(data->floor_color, y, data));
+		my_mlx_pixel_put(data, draw->x, y,
+			shade_floor(data->floor_color, y, data));
 		y++;
 	}
 }

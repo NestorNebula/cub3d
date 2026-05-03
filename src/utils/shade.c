@@ -14,17 +14,17 @@
 
 static int	shade(int color, double factor);
 
-int			shade_wall(int color, t_ray *ray)
+int	shade_wall(int color, t_ray *ray)
 {
 	double	factor;
-	
+
 	factor = 1 / (1 + ray->perp_wall_dist * 0.1);
 	if (ray->side == 1)
 		factor *= 0.7;
 	return (shade(color, factor));
 }
 
-int			shade_floor(int color, int y, t_data *data)
+int	shade_floor(int color, int y, t_data *data)
 {
 	double	factor;
 
@@ -32,7 +32,7 @@ int			shade_floor(int color, int y, t_data *data)
 	return (shade(color, factor));
 }
 
-int			shade_ceiling(int color, int y, t_data *data)
+int	shade_ceiling(int color, int y, t_data *data)
 {
 	double	factor;
 
@@ -51,6 +51,5 @@ static int	shade(int color, double factor)
 	r = (color >> 16 & 0xff) * factor;
 	g = (color >> 8 & 0xff) * factor;
 	b = (color & 0xff) * factor;
-
 	return ((r << 16) + (g << 8) + b);
 }

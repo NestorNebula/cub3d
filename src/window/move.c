@@ -14,13 +14,13 @@
 
 static void	move_top(t_data *data, t_map *map, double speed);
 
-static void move_down(t_data *data, t_map *map, double speed);
+static void	move_down(t_data *data, t_map *map, double speed);
 
 static void	move_left(t_data *data, t_map *map, double speed);
 
-static void move_right(t_data *data, t_map *map, double speed);
+static void	move_right(t_data *data, t_map *map, double speed);
 
-void		move(int moveflag, t_data *data)
+void	move(int moveflag, t_data *data)
 {
 	double	move_speed;
 
@@ -37,34 +37,41 @@ void		move(int moveflag, t_data *data)
 
 static void	move_top(t_data *data, t_map *map, double speed)
 {
-	
-	if (is_walkable(map, data->player.pos_x + data->player.dir_x * speed, data->player.pos_y))
+	if (is_walkable(map, data->player.pos_x + data->player.dir_x * speed,
+			data->player.pos_y))
 		data->player.pos_x += data->player.dir_x * speed;
-	if (is_walkable(map, data->player.pos_x, data->player.pos_y + data->player.dir_y * speed))
+	if (is_walkable(map, data->player.pos_x,
+			data->player.pos_y + data->player.dir_y * speed))
 		data->player.pos_y += data->player.dir_y * speed;
 }
 
-static void move_down(t_data *data, t_map *map, double speed)
+static void	move_down(t_data *data, t_map *map, double speed)
 {
-	if (is_walkable(map, data->player.pos_x - data->player.dir_x * speed, data->player.pos_y))
+	if (is_walkable(map, data->player.pos_x - data->player.dir_x * speed,
+			data->player.pos_y))
 		data->player.pos_x -= data->player.dir_x * speed;
-	if (is_walkable(map, data->player.pos_x, data->player.pos_y - data->player.dir_y * speed))
+	if (is_walkable(map, data->player.pos_x,
+			data->player.pos_y - data->player.dir_y * speed))
 		data->player.pos_y -= data->player.dir_y * speed;
 }
 
 static void	move_left(t_data *data, t_map *map, double speed)
 {
 	map = &data->scene->map;
-	if (is_walkable(map, data->player.pos_x - data->player.plane_x * speed, data->player.pos_y))
+	if (is_walkable(map, data->player.pos_x - data->player.plane_x * speed,
+			data->player.pos_y))
 		data->player.pos_x -= data->player.plane_x * speed;
-	if (is_walkable(map, data->player.pos_x, data->player.pos_y - data->player.plane_y * speed))
+	if (is_walkable(map, data->player.pos_x,
+			data->player.pos_y - data->player.plane_y * speed))
 		data->player.pos_y -= data->player.plane_y * speed;
 }
 
-static void move_right(t_data *data, t_map *map, double speed)
+static void	move_right(t_data *data, t_map *map, double speed)
 {
-	if (is_walkable(map, data->player.pos_x + data->player.plane_x * speed, data->player.pos_y))
+	if (is_walkable(map, data->player.pos_x + data->player.plane_x * speed,
+			data->player.pos_y))
 		data->player.pos_x += data->player.plane_x * speed;
-	if (is_walkable(map, data->player.pos_x, data->player.pos_y + data->player.plane_y * speed))
+	if (is_walkable(map, data->player.pos_x,
+			data->player.pos_y + data->player.plane_y * speed))
 		data->player.pos_y += data->player.plane_y * speed;
 }

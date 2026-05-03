@@ -17,10 +17,10 @@
 # define M_DOWN 0x02
 # define M_LEFT 0x04
 # define M_RIGHT 0x08
-# define MOVE (M_UP | M_DOWN | M_LEFT | M_RIGHT)
+# define MOVE 0x0f
 # define R_LEFT 0x10
 # define R_RIGHT 0x20
-# define ROTATE (R_LEFT | R_RIGHT)
+# define ROTATE 0x30
 
 typedef struct s_player
 {

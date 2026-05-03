@@ -24,11 +24,14 @@ static int	on_key_release_event(int keycode, t_data *data);
 
 static int	on_close_event(t_data *data);
 
-void		handle_hooks(t_data *data)
+void	handle_hooks(t_data *data)
 {
-	mlx_hook(data->win, KeyPress, KeyPressMask, (void *) on_key_press_event, data);
-	mlx_hook(data->win, KeyRelease, KeyReleaseMask, (void *) on_key_release_event, data);
-	mlx_hook(data->win, DestroyNotify, NoEventMask, (void *) on_close_event, data);
+	mlx_hook(data->win, KeyPress, KeyPressMask,
+		(void *) on_key_press_event, data);
+	mlx_hook(data->win, KeyRelease, KeyReleaseMask,
+		(void *) on_key_release_event, data);
+	mlx_hook(data->win, DestroyNotify, NoEventMask,
+		(void *) on_close_event, data);
 	mlx_loop_hook(data->mlx, (void *) loop, data);
 	mlx_loop(data->mlx);
 }
@@ -44,11 +47,11 @@ static int	loop(t_data *data)
 	{
 		if (data->img.img == NULL)
 			data->img.img = mlx_new_image(data->mlx, data->screen_width,
-				data->screen_height);
+					data->screen_height);
 		if (data->img.img != NULL)
 		{
 			data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
-				&data->img.line_len, &data->img.endian);
+					&data->img.line_len, &data->img.endian);
 			if (data->player.moveflag & MOVE)
 				move(data->player.moveflag, data);
 			if (data->player.moveflag & ROTATE)
