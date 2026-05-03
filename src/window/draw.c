@@ -13,7 +13,7 @@
 #include "data.h"
 #include "raycasting.h"
 
-void		draw(t_data *data)
+void	draw(t_data *data)
 {
 	t_ray	ray;
 	int		x;

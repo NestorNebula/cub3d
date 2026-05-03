@@ -41,9 +41,9 @@ t_square	*square_from_coordinates(t_map *map, int x, int y)
 	return (row->squares + x);
 }
 
-bool		is_walkable(t_map *map, int x, int y)
+bool	is_walkable(t_map *map, int x, int y)
 {
-	t_square *square;
+	t_square	*square;
 
 	square = square_from_coordinates(map, x, y);
 	if (square == NULL)

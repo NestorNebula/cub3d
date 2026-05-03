@@ -12,7 +12,7 @@
 
 #include "data.h"
 
-void		free_data(t_data *data)
+void	free_data(t_data *data)
 {
 	if (data == NULL)
 		return ;

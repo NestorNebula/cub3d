@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include "utils.h"
 
-double get_time(void)
+double	get_time(void)
 {
 	struct timeval	tv;
 
