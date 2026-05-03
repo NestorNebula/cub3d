@@ -36,9 +36,7 @@ int	texture_from_line(char *line, t_scene *scene)
 	if (texture->path != NULL)
 		return (!set_scene_log(scene, LOG_DUP_TEXTURE));
 	path = line + 2;
-	while (*path != '\0' && ft_strchr(" \t", *path))
-		path++;
-	texture->path = ft_strdup(path);
+	texture->path = ft_strtrim(path, " \t");
 	if (texture->path == NULL)
 		return (!set_scene_log(scene, LOG_ALLOC_ERR));
 	texture->fd = open(texture->path, O_RDWR);
