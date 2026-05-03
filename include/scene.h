@@ -28,6 +28,7 @@
 # define LOG_NO_MAP "Error\nNo map found in scene file"
 # define LOG_MULTI_ISLAND "Error\nMultiple islands in map"
 # define LOG_NOT_ENCLOSED "Error\nSquares not enclosed by walls"
+# define LOG_BAD_TEX_FORMAT "Error\nInvalid texture line format"
 
 # include <stddef.h>
 # include <stdbool.h>
