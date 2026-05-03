@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmonmire <cmonmire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/12 23:50:59 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/02 10:14:17 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/03 15:19:22 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
-# include <math.h>
-# include <stdlib.h>
 # include <X11/keysym.h>
 # include <mlx.h>
 # include "player.h"

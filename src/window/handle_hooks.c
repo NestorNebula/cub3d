@@ -6,11 +6,12 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 10:39:04 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/02 10:14:51 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/03 15:20:45 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <stdlib.h>
 #include <X11/keysym.h>
 #include <X11/X.h>
 #include "window.h"

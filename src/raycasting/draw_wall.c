@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmonmire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cmonmire <cmonmire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 02:14:22 by cmonmire          #+#    #+#             */
-/*   Updated: 2026/05/02 10:21:46 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/03 15:19:34 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "window.h"
 #include "utils.h"
 
