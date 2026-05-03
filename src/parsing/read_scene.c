@@ -27,7 +27,7 @@ static void	read_content(t_scene *scene, int fd);
 
 static void	read_map(t_scene *scene, int fd, char *first_line);
 
-static int	is_texture(char *line);
+static int	is_texture(t_scene *scene, char *line);
 
 t_scene	*read_scene(char *filepath)
 {
@@ -78,7 +78,8 @@ static void	read_content(t_scene *scene, int fd)
 	if (fd == -1)
 		return ;
 	line = get_next_line(fd);
-	while (line != NULL && (line[0] == '\n' || is_texture(line)) && !scene->log)
+	while (line != NULL
+		&& (line[0] == '\n' || is_texture(scene, line)) && !scene->log)
 	{
 		if (line[0] != '\n')
 			texture_from_line(line, scene);
@@ -114,10 +115,10 @@ static void	read_map(t_scene *scene, int fd, char *first_line)
 	free(line);
 }
 
-static int	is_texture(char *line)
+static int	is_texture(t_scene *scene, char *line)
 {
 	const char	*textures[6] = {
-		"NO ", "SO ", "WE ", "EA ", "F ", "C "
+		"NO", "SO", "WE", "EA", "F", "C",
 	};
 	size_t		i;
 
@@ -125,5 +126,9 @@ static int	is_texture(char *line)
 	while (i < TEXTURES_SIZE
 		&& ft_strncmp(line, textures[i], ft_strlen(textures[i])) != 0)
 		i++;
-	return (i != TEXTURES_SIZE);
+	if (i == TEXTURES_SIZE)
+		return (0);
+	if (ft_strchr(" \t", line[ft_strlen(textures[i])]) == NULL)
+		return (!set_scene_log(scene, LOG_BAD_TEX_FORMAT));
+	return (1);
 }
