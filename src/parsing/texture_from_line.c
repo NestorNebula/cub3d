@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:54:45 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/05 07:14:20 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/05 07:37:27 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include "libft.h"
 #include "scene.h"
+
+#define TEXTURE_EXT ".xpm"
 
 static t_stexture	*find_texture(char *line, t_scene *scene);
 
@@ -42,11 +44,13 @@ int	texture_from_line(char *line, t_scene *scene)
 	if (texture->path == NULL)
 		return (!set_scene_log(scene, LOG_ALLOC_ERR));
 	texture->fd = open(texture->path, O_RDWR);
-	if (texture->fd == -1)
+	if (check_extension(texture->path, TEXTURE_EXT) == 0 || texture->fd == -1)
 	{
 		free(texture->path);
 		texture->path = NULL;
-		return (!set_scene_log(scene, LOG_TEXTURE_FILE_ERR));
+		if (texture->fd == -1)
+			return (!set_scene_log(scene, LOG_TEXTURE_FILE_ERR));
+		return (!set_scene_log(scene, LOG_BAD_EXT_TEX));
 	}
 	return (1);
 }
