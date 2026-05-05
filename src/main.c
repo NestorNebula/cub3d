@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:13:52 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/02 10:18:59 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/05 07:43:40 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	handle_hooks(&data);
+	free_data(&data);
 	return (0);
 }
