@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 13:54:02 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/03/31 14:46:15 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/05 07:32:55 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "scene.h"
 
 #define EXT ".cub"
-#define EXT_LEN 4
 #define TEXTURES_SIZE 6
 
 static void	init_scene(t_scene *scene);
@@ -32,7 +31,6 @@ static int	is_texture(t_scene *scene, char *line);
 t_scene	*read_scene(char *filepath)
 {
 	t_scene	*scene;
-	char	*ext;
 	int		fd;
 
 	if (filepath == NULL)
@@ -44,9 +42,7 @@ t_scene	*read_scene(char *filepath)
 	fd = open(filepath, O_RDWR);
 	if (fd == -1)
 		set_scene_log(scene, LOG_FILE_ERR);
-	ext = ft_strrchr(filepath, '.');
-	if (ft_strlen(filepath) < EXT_LEN + 1 || ext == NULL
-		|| ft_strncmp(ext, EXT, EXT_LEN + 1) != 0 || *(ext - 1) == '/')
+	if (check_extension(filepath, EXT) == 0)
 		set_scene_log(scene, LOG_BAD_EXT);
 	if (!scene->log)
 		read_content(scene, fd);
