@@ -33,7 +33,7 @@ static double	get_wall_x(t_data *data, t_ray *ray)
 		wall_x = data->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
 	else
 		wall_x = data->player.pos_x + ray->perp_wall_dist * ray->ray_dir_x;
-	return (wall_x - floor(wall_x));
+	return (1.0 - (wall_x - floor(wall_x)));
 }
 
 static void	draw_texture_column(t_data *data,
