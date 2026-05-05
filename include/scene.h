@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:08:42 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/05/05 07:12:20 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/05 07:33:57 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define LOG_MULTI_ISLAND "Error\nMultiple islands in map"
 # define LOG_NOT_ENCLOSED "Error\nSquares not enclosed by walls"
 # define LOG_BAD_TEX_FORMAT "Error\nInvalid texture line format"
+# define LOG_BAD_EXT_TEX "Error\nInvalid texture file extension"
 
 # include <stddef.h>
 # include <stdbool.h>
@@ -192,5 +193,14 @@ bool		is_walkable(t_map *map, int x, int y);
  * @return The number of times the character appears in the string
  */
 int			str_count(char *str, char c);
+
+/**
+ * Checks that a given filename ends with a particular extension.
+ *
+ * @param filename The name of the file to check
+ * @param extension The expected extension
+ * @return 1 if the filename ends with the expected extension, 0 otherwise
+ */
+int			check_extension(char *filename, char *extension);
 
 #endif // !SCENE_H
