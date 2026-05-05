@@ -6,7 +6,7 @@
 /*   By: nhoussie <nhoussie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 12:08:42 by nhoussie          #+#    #+#             */
-/*   Updated: 2026/04/28 16:08:22 by nhoussie         ###   ########.fr       */
+/*   Updated: 2026/05/05 07:12:20 by nhoussie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,14 @@ t_square	*square_from_coordinates(t_map *map, int x, int y);
  * @return A boolean defining if a walkable square exists at coordinates x,y
  */
 bool		is_walkable(t_map *map, int x, int y);
+
+/**
+ * Counts the number of occurrence of a character in a string.
+ *
+ * @param str A string
+ * @param c The character to count
+ * @return The number of times the character appears in the string
+ */
+int			str_count(char *str, char c);
 
 #endif // !SCENE_H
