@@ -14,18 +14,29 @@ CUT_INC_DIR		= $(CUT_DIR)/include
 CUT				= $(CUT_DIR)/libcut.a
 
 PARSING_DIR		= $(SRC_DIR)/parsing
-
-SRCS_FILES		=
+RC_DIR			= $(SRC_DIR)/raycasting
+WINDOW_DIR		= $(SRC_DIR)/window
+UTILS_DIR		= $(SRC_DIR)/utils
 
 PARSING_FILES	= is_valid_map.c is_valid_scene.c map_helpers.c read_scene.c \
-				  row_from_line.c scene_helpers.c texture_from_line.c
+				  row_from_line.c scene_helpers.c texture_from_line.c parsing_utils.c
 
-SRCS 			= $(addprefix $(SRC_DIR)/, $(SRCS_FILES)) \
-				  $(addprefix $(PARSING_DIR)/, $(PARSING_FILES))
+RC_FILES		= calc_step_and_side_dist.c calc_wall_dist.c dda.c \
+				  draw_floor_ceiling.c draw_wall.c ray_init.c wall_with_texture.c
+
+WINDOW_FILES	= draw.c handle_hooks.c my_mlx_pixel_put.c move.c rotate.c
+
+UTILS_FILES		= free_data.c get_time.c init_data.c shade.c
+
+SRCS 			= $(addprefix $(PARSING_DIR)/, $(PARSING_FILES)) \
+				  $(addprefix $(RC_DIR)/, $(RC_FILES)) \
+				  $(addprefix $(WINDOW_DIR)/, $(WINDOW_FILES)) \
+				  $(addprefix $(UTILS_DIR)/, $(UTILS_FILES)) \
+				  $(SRC_DIR)/main.c
 
 OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-TESTS_FILES		= read_scene.c texture_from_line.c row_from_line.c
+TESTS_FILES		= read_scene.c row_from_line.c texture_from_line.c
 
 TESTS			= $(addprefix $(TEST_DIR)/, $(TESTS_FILES))
 
@@ -65,14 +76,18 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	$(RM) $(RMFLAGS) $(OBJ_DIR)
+	$(MAKE) clean -C $(MLX_DIR) --no-print-directory
 	$(MAKE) clean -C $(LIBFT_DIR) --no-print-directory
 
 fclean:
 	$(RM) $(RMFLAGS) $(OBJ_DIR)
 	$(RM) $(RMFLAGS) $(NAME)
+	$(MAKE) clean -C $(MLX_DIR) --no-print-directory
 	$(MAKE) fclean -C $(LIBFT_DIR) --no-print-directory
 
 re: fclean all
+
+bonus: all
 
 leaks: $(NAME)
 	$(VALGRIND) $(VALGRIND_FLAGS) ./$(NAME)
@@ -94,10 +109,11 @@ checknorm:
 $(CUT):
 	$(MAKE) -C $(CUT_DIR) --no-print-directory
 
-$(TEST_DIR)/%.out: $(TEST_DIR)/%.c $(LIBFT) $(CUT) $(OBJS)
+$(TEST_DIR)/%.out: $(TEST_DIR)/%.c $(CUT) $(OBJS)
 	$(CP) $(LIBFT) libcub3d.a
 	$(AR) $(ARFLAGS) libcub3d.a $(OBJS)
-	$(CC) $(CFLAGS) $< -o $@ $(IFLAGS) -I$(CUT_INC_DIR) -L$(CUT_DIR) -L. -lcut -lcub3d
+	$(CC) $(CFLAGS) $< -o $@ $(IFLAGS) -I$(CUT_INC_DIR) -L$(CUT_DIR) \
+        -L. -lcut -lcub3d
 
 test: $(TEST_EXECS)
 	@for test in $(TEST_EXECS) ; do \
@@ -111,10 +127,8 @@ test_leaks : $(TEST_EXECS)
 
 fclean_test:
 	$(RM) $(RMFLAGS) $(TEST_EXECS)
-	$(RM) $(RMFLAGS) libcub3d.a
-	$(MAKE) fclean -C $(LIBFT_DIR) --no-print-directory
-	$(MAKE) fclean -C $(CUT_DIR) --no-print-directory
+	$(MAKE) -C $(CUT_DIR) fclean --no-print-directory
 
 
-.PHONY: all clean fclean re leaks leaks_supp sanitize thread checknorm test \
+.PHONY: all clean fclean re bonus leaks leaks_supp sanitize thread checknorm test \
 	test_leaks fclean_test \
